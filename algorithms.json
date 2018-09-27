@@ -1,0 +1,1510 @@
+[
+	{
+		"algorithm": "A-1",
+		"name": "Precision Adder",
+		"category": "CV Processing",
+		"video": "mCFaTt6vNpk",
+		"io": [
+			"A = X + Y + offset, or X + offset",
+			"B = X - Y – offset, or Y - offset",
+			"offset = ±10V in 1V steps derived from Z"
+		],
+		"extra": "Knob recorder enabled",
+		"parameters": [	
+			[0, 1, 0, "Z Mode."],
+			[0, 1, 0, "Sum Mode."]
+		]
+	},
+	{
+		"algorithm": "A-2",
+		"name": "Four Quadrant Multiplier",
+		"category": "Modulation Effects",
+		"video": "nRBbdbQZi5Q",
+		"io": [
+			"A = X * Y * scale",
+			"B = -X * Y * scale",
+			"scale = 1/10 to 10x in steps derived from Z"
+		],
+		"extra": "Knob recorder enabled",
+		"parameters": [
+			[0, 1, 0, "When 1, the scale is not restricted to integer steps, and changes smoothly with Z."]
+		]
+	},
+	{
+		"algorithm": "A-3",
+		"name": "Full-wave Rectifier",
+		"category": "Waveshaping",
+		"video": "DA1rK1S6wuo",
+		"io": [
+			"A = abs( X + Y ) or abs( X )",
+			"B = abs( X - Y ) or abs( Y )",
+			"Z selects mode"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "A-4",
+		"name": "Minimum/maximum",
+		"category": "Waveshaping",
+		"video": "GpkaOchvVSE",
+		"io": [
+			"A = min( X, Y )",
+			"B = max( X, Y )",
+			"Z is gate"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "A-5",
+		"name": "Linear/Exponential Converter",
+		"category": "CV Processing",
+		"video": "jpnlxEnd1Lw",
+		"io": [
+			"A = ( 2 ^ X ) * scale",
+			"B = log2( Y / scale )",
+			"Z is Hz/V scale, centred on 1kHz"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "A-6",
+		"name": "Quantizer",
+		"category": "Quantizers",
+		"video": "5THsGKn3Pwk",
+		"io": [
+			"A = quantized( X )",
+			"B = trigger on note change",
+			"Z chooses scale & function of Y",
+			"Y = transpose (Z positive) or trigger (Z negative)"
+		],
+		"extra": "Outputs & Receives MIDI",
+		"parameters": [
+			[-1, 31, 31, "Input X attenuation."],
+			[0, 1, 0, "Transpose mode."],
+			[-31, 31, 0, "Key."],
+			[0, 31, 0, "Offset."],
+			[0, 1, 0, "MIDI Gate."]
+		]
+	},
+	{
+		"algorithm": "A-7",
+		"name": "Comparator",
+		"category": "CV Processing",
+		"video": "Ttp7RCtofg0",
+		"io": [
+			"A = gate from X > Y",
+			"B = inverted gate",
+			"Z is hysteresis"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "A-8",
+		"name": "Dual Waveshaper",
+		"category": "Waveshaping",
+		"video": "-B1VzxQ2qOo",
+		"io": [
+			"A = folded X",
+			"B = triangle-to-sine Y",
+			"Z is gain"
+		],
+		"extra": "Knob recorder enabled",
+		"parameters": []
+	},
+	{
+		"algorithm": "B-1",
+		"name": "Sample and Hold",
+		"category": "Randomness & Patterns",
+		"video": "x8yDMQqE-yA",
+		"io": [
+			"A = X when Y exceeds 1V",
+			"B = noise ±8V",
+			"Z is slew rate"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 1, 0, "Mode."],
+			[0, 31, 0, "Offset."]
+		]
+	},
+	{
+		"algorithm": "B-2",
+		"name": "Slew Rate Limiter",
+		"category": "CV Processing",
+		"video": "irKcEJCB0FQ",
+		"io": [
+			"A = linear slew rate limited ( X + Y )",
+			"B = log slew rate limited ( X + Y )",
+			"Z is slew rate"
+		],
+		"extras": false,
+		"parameters": [
+			[-1, 32, -1, "Up slew."],
+			[-1, 32, -1, "Down slew."]
+		]
+	},
+	{
+		"algorithm": "B-3",
+		"name": "Pitch and Envelope Tracker",
+		"category": "CV Processing",
+		"video": "YAlBBzNbbdg",
+		"io": [
+			"A = V/octave pitch derived from X, plus Y",
+			"B = envelope dervied from X",
+			"Z is slew rate for envelope"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "B-4",
+		"name": "Clockable Delay/Echo",
+		"category": "Delay",
+		"video": "Gj69fn-liYs",
+		"io": [
+			"X is signal",
+			"Y is clock input",
+			"Z is feedback",
+			"A = output according to mode",
+			"B = output according to mode"
+		],
+		"extra": "Tap tempo enabled",
+		"parameters": [
+			[-15, 8, 0, "Delay time multiplier."],
+			[0, 2, 0, "Output mode."]
+		]
+	},
+	{
+		"algorithm": "B-5",
+		"name": "LFO",
+		"category": "LFO",
+		"video": "iBtg8CJtC1E",
+		"io": [
+			"X is Hz/V frequency",
+			"Y is waveshape",
+			"Z is tune",
+			"A is saw -> sine -> triangle",
+			"B is pulse -> square -> pulse"
+		],
+		"extras": false,
+		"parameters": [
+			[-1, 31, 31, "Sets an attenuation for output A."],
+			[-1, 31, 31, "Sets an attenuation for output B."],
+			[-31, 31, 0, "Sets an offset for output A."],
+			[-31, 31, 0, "Sets an offset for output B."]
+		]
+	},
+	{
+		"algorithm": "B-6",
+		"name": "Clockable LFO",
+		"category": "LFO",
+		"video": "_ZqZtVd8eLI",
+		"io": [
+			"X is clock input",
+			"Y is waveshape",
+			"Z is integer multiplier/divider",
+			"A is saw -> sine -> triangle",
+			"B is pulse -> square -> pulse"
+		],
+		"extra": "Tap tempo enabled",
+		"parameters": [
+			[-1, 31, 31, "Sets an attenuation for both LFO outputs."]
+		]
+	},
+	{
+		"algorithm": "B-7",
+		"name": "VCO with linear FM",
+		"category": "Oscillators",
+		"video": "5JPUuaPaxxo",
+		"io": [
+			"X is V/Oct pitch input Y is linear FM input Z is tune ±0.5 octaves",
+			"A is sine",
+			"B is saw"
+		],
+		"extras": false,
+		"parameters": [
+			[-16, 8, 0, "Octave shift."],
+			[-1, 31, 31, "Sets an attenuation for output A."],
+			[-1, 31, 31, "Sets an attenuation for output B."]
+		]
+	},
+	{
+		"algorithm": "B-8",
+		"name": "VCO with waveshaping",
+		"category": "Oscillators",
+		"video": "8JDX9bjcG3o",
+		"io": [
+			"X is V/Oct pitch input",
+			"Y is waveshape/PWM",
+			"Z is tune ±0.5 octaves",
+			"A is saw -> tri -> saw",
+			"B is pulse -> square -> pulse"
+		],
+		"extras": false,
+		"parameters": [
+			[-16, 8, 0, "Octave shift."],
+			[-1, 31, 31, "Sets an attenuation for output A."],
+			[-1, 31, 31, "Sets an attenuation for output B."],
+			[-31, 31, 0, "Offset for input Y (manual shape control)."]
+		]
+	},
+	{
+		"algorithm": "C-1",
+		"name": "Precision Adder (fractional offsets)",
+		"category": "CV Processing",
+		"video": "no video",
+		"io": [
+			"A = X + Y + offset",
+			"B = X - Y - offset",
+			"offset in steps derived from Z"
+		],
+		"extra": "Knob recorder enabled",
+		"parameters": [
+			[1, 12, 12, "Sets the offset divisor."]
+		]
+	},
+	{
+		"algorithm": "C-2",
+		"name": "Voltage Controlled Delay Line",
+		"category": "Delay",
+		"video": "xirCtbaCRUA",
+		"io": [
+			"X is audio input",
+			"Y is delay time",
+			"Z is feedback (bipolar)",
+			"A is delay output",
+			"B is delay output plus input signal"
+		],
+		"extras": false,
+		"parameters": [
+			[-31, 31, 0, "Applies an offset to the Y input."]
+		]
+	},
+	{
+		"algorithm": "C-3",
+		"name": "Clockable Ping Pong Delay (Z feedback)",
+		"category": "Delay",
+		"video": "3pHSGoLNGuQ",
+		"io": [
+			"X is audio input Y is clock",
+			"Z is feedback",
+			"A is left output",
+			"B is right output"
+		],
+		"extra": "Tap tempo enabled",
+		"parameters": [
+			[0, 1, 0, "Output mode."],
+			[-15, 8, 0, "Delay time multiplier."],
+			[-32, 32, -32, "Input pan."]
+		]
+	},
+	{
+		"algorithm": "C-4",
+		"name": "Clockable Ping Pong Delay (Z input pan)",
+		"category": "Delay",
+		"video": "WdUGXBpLFt4",
+		"io": [
+			"X is audio input Y is clock",
+			"Z is input pan",
+			"A is left output",
+			"B is right output"
+		],
+		"extra": "Tap tempo enabled",
+		"parameters": [
+			[0, 31, 24, "Feedback."],
+			[-15, 8, 0, "Delay time multiplier."],
+			[0, 1, 0, "Output mode."]
+		]
+	},
+	{
+		"algorithm": "C-5",
+		"name": "Resonator",
+		"category": "Filters",
+		"video": "uqnreY1yVd8",
+		"io": [
+			"X is audio input",
+			"Y is centre frequency (pitch) Z is gain",
+			"A is audio output",
+			"B is envelope of audio output"
+		],
+		"extra": "Z press is 'strike'",
+		"parameters": [
+			[-31, 31, 0, "Applies an offset to the Y input."]
+		]
+	},
+	{
+		"algorithm": "C-6",
+		"name": "Vocoder",
+		"category": "Filters",
+		"video": "bYlP8Q03Xl4",
+		"io": [
+			"X is modulator input",
+			"Y is carrier input",
+			"Z sets the decay time",
+			"A is audio output",
+			"B is envelope output"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 1, 0, "Selects the filter bank."]
+		]
+	},
+	{
+		"algorithm": "C-7",
+		"name": "Phaser",
+		"category": "Modulation Effects",
+		"video": "XLxi45ONXVA",
+		"io": [
+			"X is audio input",
+			"Y is sweep",
+			"Z is feedback (bipolar)",
+			"A is phase-shifted output plus input signal",
+			"B is phase-shifted output"
+		],
+		"extras": false,
+		"parameters": [
+			[-31, 31, 0, "Applies an offset to the Y input."],
+			[1, 10, 10, "Sets the number of phaser stages."]
+		]
+	},
+	{
+		"algorithm": "C-8",
+		"name": "Bit Crusher",
+		"category": "Waveshaping",
+		"video": "Tv5c8gPYwFs",
+		"io": [
+			"X is signal input",
+			"Y is sample rate input Z sets bit reduction",
+			"A is signal output",
+			"B is comparator output"
+		],
+		"extras": false,
+		"parameters": [
+			[-31, 31, 0, "Applies an offset to the Y input."],
+			[0, 7, 0, "Selects the bit reduction mode."],
+			[0, 7, 0, "Selects the bit mangling mode."]
+		]
+	},
+	{
+		"algorithm": "D-2",
+		"name": "Tape Delay",
+		"category": "Delay",
+		"video": "yvoYk0w1Loo",
+		"io": [
+			"X is audio input",
+			"Y is tape speed",
+			"Z is feedback",
+			"A = output according to mode",
+			"B = output according to mode"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 43, 43, "Tape length."],
+			[-9, 9, 0, "Fine length control."],
+			[-8, 16, 0, "Tape speed."],
+			[0, 2, 0, "Output mode."]
+		]
+	},
+	{
+		"algorithm": "D-3",
+		"name": "Waveform Animator",
+		"category": "Waveshaping",
+		"video": "htkdsLm0oa8",
+		"io": [
+			"X is audio input",
+			"Y is threshold",
+			"Z is separation",
+			"A = animated output",
+			"B = square waves output"
+		],
+		"extras": false,
+		"parameters": [
+			[-1, 31, 11, "LFO depth."],
+			[-31, 31, 0, "Y offset."],
+			[0, 31, 23, "LFO rate."],
+			[-1, 31, -1, "Scale."]
+		]
+	},
+	{
+		"algorithm": "D-4",
+		"name": "State Variable Filter",
+		"category": "Filters",
+		"video": "7sIsahePBHA",
+		"io": [
+			"X is audio input",
+			"Y is filter frequency",
+			"Z is filter type",
+			"A is filter output LP->BP->HP",
+			"B is filter output HP->BP->LP"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 31, 0, "Filter resonance."]
+		]
+	},
+	{
+		"algorithm": "D-5",
+		"name": "LP/HP Filter",
+		"category": "Filters",
+		"video": "RwRScmH7atc",
+		"io": [
+			"X is audio input",
+			"Y is filter frequency",
+			"Z is filter resonance",
+			"A is low pass filter output",
+			"B is high pass filter output"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "D-6",
+		"name": "LP/BP Filter",
+		"category": "Filters",
+		"video": "SjmzSA3bYgc",
+		"io": [
+			"X is audio input",
+			"Y is filter frequency",
+			"Z is filter resonance",
+			"A is low pass filter output",
+			"B is band pass filter output"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "D-7",
+		"name": "BP/HP Filter",
+		"category": "Filters",
+		"video": "I9FoVhLcMPs",
+		"io": [
+			"X is audio input",
+			"Y is filter frequency",
+			"Z is filter resonance",
+			"A is band pass filter output",
+			"B is high pass filter output"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "D-8",
+		"name": "BP/Notch Filter",
+		"category": "Filters",
+		"video": "Lv6r94IeERA",
+		"io": [
+			"X is audio input",
+			"Y is filter frequency",
+			"Z is filter resonance",
+			"A is band pass filter output",
+			"B is notch filter output"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "E-1",
+		"name": "AR Envelope",
+		"category": "Envelopes & VCA",
+		"video": "CCae5gjnfrc",
+		"io": [
+			"X is trigger input",
+			"Y is trigger input",
+			"Z sets the envelope times",
+			"A is envelope output",
+			"B is envelope output"
+		],
+		"extra": "Press Z to trigger",
+		"parameters": [
+			[0, 2, 0, "Trigger Mode."],
+			[0, 1, 0, "Z Mode."],
+			[-32, 32, 32, "Output A Attenuverter."],
+			[-32, 32, 32, "Output B Attenuverter."],
+			[-32, 32, 0, "Output A Offset."],
+			[-32, 32, 0, "Output B Offset."]
+		]
+	},
+	{
+		"algorithm": "E-2",
+		"name": "AR Envelope & VCA",
+		"category": "Envelopes & VCA",
+		"video": "mC7AxLqseVc",
+		"io": [
+			"X is trigger input",
+			"Y is VCA input",
+			"Z sets the envelope times",
+			"A is envelope output",
+			"B is VCA output"
+		],
+		"extra": "Press Z to trigger",
+		"parameters": [
+			[0, 2, 0, "Trigger Mode."],
+			[0, 1, 0, "Z Mode."],
+			[-32, 32, 32, "Output A Attenuverter."],
+			[-32, 32, 32, "Output B Attenuverter."],
+			[-32, 32, 0, "Output A Offset."],
+			[-32, 32, 0, "Output B Offset."]
+		]
+	},
+	{
+		"algorithm": "E-3",
+		"name": "Dual AR Envelope",
+		"category": "Envelopes & VCA",
+		"video": "xnTesaYXU7Y",
+		"io": [
+			"X is trigger input A",
+			"Y is trigger input B",
+			"Z sets the envelope times A is envelope output A",
+			"B is envelope output B"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 2, 0, "Trigger Mode."],
+			[0, 1, 0, "Z Mode."],
+			[-32, 32, 32, "Output A Attenuverter."],
+			[-32, 32, 32, "Output B Attenuverter."],
+			[-32, 32, 0, "Output A Offset."],
+			[-32, 32, 0, "Output B Offset."]
+		]
+	},
+	{
+		"algorithm": "E-7",
+		"name": "Euro to Buchla Converter",
+		"category": "Utility",
+		"video": "no video",
+		"io": [
+			"X is 1V/octave input",
+			"Y is gate input",
+			"Z is tune ±0.5 octaves",
+			"A is 1.2V/octave output",
+			"B is gate/trigger output"
+		],
+		"extras": false,
+		"parameters": [
+			[-8, 8, 0, "Octave shift."]
+		]
+	},
+	{
+		"algorithm": "E-8",
+		"name": "Buchla to Euro Converter",
+		"category": "Utility",
+		"video": "no video",
+		"io": [
+			"X is 1.2V/octave input",
+			"Y is gate/trigger input",
+			"Z is tune ±0.5 octaves",
+			"A is 1V/octave output",
+			"B is trigger output"
+		],
+		"extras": false,
+		"parameters": [
+			[-8, 8, 0, "Octave shift."]
+		]
+	},
+	{
+		"algorithm": "F-1",
+		"name": "Clockable AD Envelope (with mute)",
+		"category": "Envelopes & VCA",
+		"video": "LlM3GRI10Hk",
+		"io": [
+			"X is clock input",
+			"Y is mute input",
+			"Z sets the envelope shape",
+			"A is envelope output",
+			"B is envelope output"
+		],
+		"extra": "Tap tempo enabled",
+		"parameters": [
+			[-15, 8, 0, "Delay time multiplier."],
+			[-32, 32, 32, "Output A Attenuverter."],
+			[-32, 32, 32, "Output B Attenuverter."]
+		]
+	},
+	{
+		"algorithm": "F-2",
+		"name": "Clockable AD Envelope (with gate)",
+		"category": "Envelopes & VCA",
+		"video": "7H4rT9ClRFI",
+		"io": [
+			"X is clock input",
+			"Y is gate input",
+			"Z sets the envelope shape",
+			"A is envelope output",
+			"B is envelope output"
+		],
+		"extra": "Tap tempo enabled",
+		"parameters": [
+			[-15, 8, 0, "Delay time multiplier."],
+			[-32, 32, 32, "Output A Attenuverter."],
+			[-32, 32, 32, "Output B Attenuverter."]
+		]
+	},
+	{
+		"algorithm": "F-3",
+		"name": "Clockable AD Envelope (with trigger)",
+		"category": "Envelopes & VCA",
+		"video": "xQ4dGCsA1eo",
+		"io": [
+			"X is clock input",
+			"Y is trigger input",
+			"Z sets the envelope shape",
+			"A is envelope output",
+			"B is envelope output"
+		],
+		"extra": "Tap tempo enabled",
+		"parameters": [
+			[-15, 8, 0, "Delay time multiplier."],
+			[-32, 32, 32, "Output A Attenuverter."],
+			[-32, 32, 32, "Output B Attenuverter."]
+		]
+	},
+	{
+		"algorithm": "F-4",
+		"name": "Clockable AD Envelope & VCA",
+		"category": "Envelopes & VCA",
+		"video": "rl5xEyjxXvk",
+		"io": [
+			"X is clock input",
+			"Y is VCA input",
+			"Z sets the envelope shape",
+			"A is envelope output",
+			"B is VCA output"
+		],
+		"extra": "Tap tempo enabled",
+		"parameters": [
+			[-15, 8, 0, "Delay time multiplier."],
+			[-32, 32, 32, "Output A Attenuverter."],
+			[-32, 32, 32, "Output B Attenuverter."]
+		]
+	},
+	{
+		"algorithm": "F-5",
+		"name": "Shift Register Random CVs",
+		"category": "Randomness & Patterns",
+		"video": "3sSr0X3vaDI",
+		"io": [
+			"X is clock input",
+			"Y is modify input",
+			"Z sets the randomness",
+			"A is unipolar output",
+			"B is bipolar output"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 1, 0, "Direction."],
+			[1, 16, 8, "Length."],
+			[0, 31, 0, "Slew rate."],
+			[-1, 31, 31, "Output attenuator."]
+		]
+	},
+	{
+		"algorithm": "F-6",
+		"name": "Shift Register Random Quantized CVs",
+		"category": "Randomness & Patterns",
+		"video": "hDI8juYrebw",
+		"io": [
+			"X is clock input",
+			"Y is modify input",
+			"Z sets the randomness",
+			"A is quantized CV output",
+			"B is trigger output"
+		],
+		"extra": "Outputs MIDI",
+		"parameters": [
+			[0, 1, 0, "Direction."],
+			[1, 16, 8, "Length."],
+			[0, 15, 0, "Scale."],
+			[-1, 31, 31, "Output attenuator."],
+			[0, 1, 0, "MIDI Gate"]
+		]
+	},
+	{
+		"algorithm": "F-7",
+		"name": "Shift Register Random Triggers",
+		"category": "Randomness & Patterns",
+		"video": "4HqIG_Brzxg",
+		"io": [
+			"X is clock input",
+			"Y is modify input",
+			"Z sets the randomness",
+			"A is trigger output",
+			"B is inverse trigger output"
+		],
+		"extra": "Press Z to modify sequence",
+		"parameters": [
+			[1, 16, 8, "Length."]
+		]
+	},
+	{
+		"algorithm": "F-8",
+		"name": "Shift Register Random Dual Triggers",
+		"category": "Randomness & Patterns",
+		"video": "b3gnEJikp9M",
+		"io": [
+			"X is clock input",
+			"Y is modify input",
+			"Z sets the randomness",
+			"A is trigger output A",
+			"B is trigger output B"
+		],
+		"extras": false,
+		"parameters": [
+			[1, 16, 8, "Length A."],
+			[1, 16, 8, "Length B."]
+		]
+	},
+	{
+		"algorithm": "G-1",
+		"name": "ES-1 Emulation",
+		"category": "MIDI & External Control",
+		"video": "9_raPvdIMRE",
+		"io": [
+			"X is input 1",
+			"Y is input 2",
+			"Z is trim",
+			"A is output 1",
+			"B is output 2"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "G-2",
+		"name": "ES-2 Emulation",
+		"category": "MIDI & External Control",
+		"video": "8EIPFZwQ9uQ",
+		"io": [
+			"X is input 1",
+			"Y is input 2",
+			"Z is trim",
+			"A is output 1",
+			"B is output 2"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "G-3",
+		"name": "Pitch Reference",
+		"category": "Utility",
+		"video": "MID1aSrWX7o",
+		"io": [
+			"X & Y are not used",
+			"A is sine output",
+			"B is square output",
+			"Z sets the amplitude of A & B"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 11, 0, "Semitone."],
+			[-1, 9, 4, "Octave"]
+		]
+	},
+	{
+		"algorithm": "G-4",
+		"name": "Frequency Reference",
+		"category": "Utility",
+		"video": "fVyjM50GKWg",
+		"io": [
+			"X & Y are not used",
+			"A is sine output",
+			"B is square output",
+			"Z sets the amplitude of A & B"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "G-5",
+		"name": "Tuner",
+		"category": "Utility",
+		"video": "6zXS3RKR3xw",
+		"io": [
+			"X is input",
+			"Y is not used",
+			"A is a copy of X",
+			"B is a sine wave at the tracked pitch",
+			"Z sets the amplitude of B"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "G-6",
+		"name": "MIDI Clock",
+		"category": "MIDI & External Control",
+		"video": "af6eHIYT2Ww",
+		"io": [
+			"X is clock input",
+			"Y is run/stop input",
+			"A & B are clock outputs",
+			"Z is not used"
+		],
+		"extra": "Outputs & Receives MIDI",
+		"parameters": [
+			[-2, 12, 6, "Clock divisor for A."],
+			[-2, 12, -2, "Clock divisor for B."],
+			[0, 11, 8, "Clock divisor for MIDI clock output."],
+			[0, 1, 0, "Y mode."]
+		]
+	},
+	{
+		"algorithm": "G-7",
+		"name": "MIDI/CV",
+		"category": "MIDI & External Control",
+		"video": "1ArqOPnezdo",
+		"io": [
+			"X & Y are not used",
+			"A is pitch CV output",
+			"B is gate output",
+			"Z is not used"
+		],
+		"extra": "Receives MIDI",
+		"parameters": [
+			[-31, 31, 0, "Transpose."],
+			[0, 24, 2, "Pitch bend depth."],
+			[-1, 31, -1, "Scale."]
+		]
+	},
+	{
+		"algorithm": "G-8",
+		"name": "CV/MIDI",
+		"category": "MIDI & External Control",
+		"video": "JLomApKB30E",
+		"io": [
+			"X is pitch CV input",
+			"Y is gate input",
+			"A & B are not used",
+			"Z is mod wheel or velocity CV input"
+		],
+		"extra": "Outputs MIDI",
+		"parameters": [
+			[0, 99, 16, "Channel offset."],
+			[0, 1, 0, "Z mode."]
+		]
+	},
+	{
+		"algorithm": "H-1",
+		"name": "Crossfade/Pan",
+		"category": "Modulation Effects",
+		"video": "Ar7Gym6SOSE",
+		"io": [
+			"A = Mix of X & Y according to Z",
+			"B = Inverted mix of X & Y according to Z, or LFO"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 2, 0, "Crossfade/pan law."],
+			[0, 2, 0, "Clip mode."],
+			[0, 99, 0, "LFO speed."]
+		]
+	},
+	{
+		"algorithm": "H-2",
+		"name": "Dual Sample and Hold",
+		"category": "Randomness & Patterns",
+		"video": "d-kA1a9zrx8",
+		"io": [
+			"A = X when Z exceeds 1V",
+			"B = Y when Z exceeds 1V"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 1, 0, "Mode."],
+			[0, 31, 0, "Offset."]
+		]
+	},
+	{
+		"algorithm": "H-3",
+		"name": "Dual Quantizer (Z scale)",
+		"category": "Quantizers",
+		"video": "QkiZ__Kx1EE",
+		"io": [
+			"A = quantized( X )",
+			"B = quantized( Y )",
+			"Z chooses scale"
+		],
+		"extra": "Outputs MIDI",
+		"parameters": [
+			[-1, 31, 31, "Input X attenuation."],
+			[-1, 31, 31, "Input Y attenuation."],
+			[-31, 31, 0, "X transpose."],
+			[-31, 31, 0, "Y transpose."]
+		]
+	},
+	{
+		"algorithm": "H-4",
+		"name": "Dual Quantizer",
+		"category": "Quantizers",
+		"video": "Ui3mC0rQ4KU",
+		"io": [
+			"A = quantized( X )",
+			"B = quantized( Y )",
+			"Z is trigger"
+		],
+		"extras": "Outputs MIDI",
+		"parameters": [
+			[-1, 31, 31, "Input X attenuation."],
+			[-1, 31, 31, "Input Y attenuation."],
+			[-16, 16, 0, "X scale/trigger mode."],
+			[-16, 16, 0, "Y scale/trigger mode."],
+			[0, 1, 0, "MIDI Gate."]
+		]
+	},
+	{
+		"algorithm": "H-5",
+		"name": "Dual Euclidean Patterns",
+		"category": "Randomness & Patterns",
+		"video": "Y3E8XvoLLzg",
+		"io": [
+			"A is pattern 1 out",
+			"B is pattern 2 out",
+			"X is clock input",
+			"Y is reset input",
+			"Z sets the 'pulses' for pattern 2"
+		],
+		"extras": false,
+		"parameters": [
+			[1, 16, 16, "Steps."],
+			[1, 16, 4, "Pulses (pattern 1)."],
+			[0, 16, 0, "Rotation."],
+			[0, 31, 0, "Pulse length."]
+		]
+	},
+	{
+		"algorithm": "H-6",
+		"name": "Dual Delayed Pulse Generator",
+		"category": "Utility",
+		"video": "7UW7IQYfFyQ",
+		"io": [
+			"A is pulse triggered by X",
+			"B is pulse triggered by Y",
+			"Z function depends on parameter setting"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 6, 0, "Z mode."],
+			[0, 12, 6, "Range."],
+			[-1, 31, -1, "Delay."],
+			[0, 31, 7, "Length."]
+		]
+	},
+	{
+		"algorithm": "H-7",
+		"name": "Noise",
+		"category": "Oscillators",
+		"video": "WBX-4gOPX50",
+		"io": [
+			"A is noise, optionally scaled by X",
+			"B is noise, optionally scaled by Y",
+			"Z is blend"
+		],
+		"extras": false,
+		"parameters": [
+			[-1, 3, -1, "Type A."],
+			[-1, 3, -1, "Type B."],
+			[-1, 31, 31, "Attenuation A."],
+			[-1, 31, 31, "Attenuation B."]
+		]
+	},
+	{
+		"algorithm": "H-8",
+		"name": "Quantizer 2",
+		"category": "Quantizers",
+		"video": "WkV_BmIXYWM",
+		"io": [
+			"X is pitch CV input",
+			"Y is trigger input or pitch CV input ",
+			"Z sets the interval between A & B ",
+			"A is quantized CV out",
+			"B is quantized CV out"
+		],
+		"extras": false,
+		"parameters": [
+			["N/A", "N/A", "N/A", "Pattern."],
+			[0, 2, 0, "Scale."],
+			[-12, 12, 0, "Key."],
+			[0, 32, 32, "Input X attenuation."],
+			[-1, 31, -1, "Trigger mode and offset."],
+			[0, 32, 0, "Slew rate."]
+		]
+	},
+	{
+		"algorithm": "I-1",
+		"name": "Audio Playback",
+		"category": "Sample Players",
+		"video": "JAM5U5NFS1c",
+		"io": [
+			"X is retrigger CV",
+			"Y is start position CV",
+			"Z selects the sample",
+			"A is left audio output",
+			"B is right audio output"
+		],
+		"extra": "Receives MIDI",
+		"parameters": [
+			[0, 99, 0, "Folder."],
+			[0, 99, 0, "Envelope time."]
+		]
+	},
+	{
+		"algorithm": "I-2",
+		"name": "Clocked Audio Playback",
+		"category": "Sample Players",
+		"video": "9wZHqDfXvGg",
+		"io": [
+			"X is retrigger CV",
+			"Y is clock",
+			"Z selects the sample",
+			"A is left audio output",
+			"B is right audio output"
+		],
+		"extra": "Receives MIDI",
+		"parameters": [
+			[0, 99, 0, "Folder."],
+			[0, 99, 0, "Envelope time."]
+		]
+	},
+	{
+		"algorithm": "I-3",
+		"name": "Audio Playback with V/Oct",
+		"category": "Sample Players",
+		"video": "djuLLK1pZgk",
+		"io": [
+			"X is retrigger CV",
+			"Y is V/octave pitch CV",
+			"Z selects the sample",
+			"A is left audio output",
+			"B is right audio output"
+		],
+		"extra": "Receives MIDI",
+		"parameters": [
+			[0, 99, 0, "Folder."],
+			[-8, 8, 0, "Octave shift."],
+			[0, 99, 0, "Envelope time."],
+			[-1, 4, -1, "MIDI mode."]
+		]
+	},
+	{
+		"algorithm": "I-4",
+		"name": "Audio Playback with Z Speed",
+		"category": "Sample Players",
+		"video": "UG0bWiCYbsA",
+		"io": [
+			"X is retrigger CV",
+			"Y is start position CV",
+			"Z sets the playback speed",
+			"A is left audio output",
+			"B is right audio output"
+		],
+		"extra": "Receives MIDI",
+		"parameters": [
+			[0, 99, 0, "Folder."],
+			[0, 99, 0, "Selects the sample."],
+			[0, 99, 0, "Envelope time."]
+		]
+	},
+	{
+		"algorithm": "I-5",
+		"name": "Audio Playback with Reverse",
+		"category": "Sample Players",
+		"video": "no video",
+		"io": [
+			"X is retrigger CV",
+			"Y selects the sample",
+			"Z sets the playback speed",
+			"A is left audio output",
+			"B is right audio output"
+		],
+		"extra": "Receives MIDI",
+		"parameters": [
+			[0, 99, 0, "Folder."],
+			[-49, 49, 0, "Y offset."],
+			[0, 99, 0, "Envelope time."]
+		]
+	},
+	{
+		"algorithm": "I-6",
+		"name": "Audio Playback with Scrub",
+		"category": "Sample Players",
+		"video": "-Z3v_W-s2rI",
+		"io": [
+			"X is not used",
+			"Y is playback position",
+			"Z selects the sample",
+			"A is left audio output",
+			"B is right audio output"
+		],
+		"extra": "(Receives MIDI?)",
+		"parameters": [
+			[0, 99, 0, "Folder."],
+			[1, 99, 16, "Speed limit."],
+			[0, 20, 0, "Slew limit."],
+			[-32, 32, 0, "Y offset."]
+		]
+	},
+	{
+		"algorithm": "I-7",
+		"name": "Dual Audio Playback",
+		"category": "Sample Players",
+		"video": "tBC_KhffiGk",
+		"io": [
+			"X is trigger A",
+			"Y is trigger B",
+			"Z selects the samples",
+			"A is left audio output",
+			"B is right audio output"
+		],
+		"extra": "Receives MIDI",
+		"parameters": [
+			[0, 99, 0, "Folder."],
+			[0, 1, 0, "Selects the panning option."],
+			[0, 99, 0, "Envelope time."]
+		]
+	},
+	{
+		"algorithm": "I-8",
+		"name": "Dual Audio Playback with Z Speed",
+		"category": "Sample Players",
+		"video": "NIt7VFPQwaw",
+		"io": [
+			"X is trigger A",
+			"Y is trigger B",
+			"Z sets the playback speed",
+			"A is left audio output",
+			"B is right audio output"
+		],
+		"extra": "Receives MIDI",
+		"parameters": [
+			[0, 99, 0, "Folder."],
+			[0, 99, 0, "Selects sample A."],
+			[0, 99, 1, "Selects sample B."],
+			[0, 1, 0, "Selects the panning option."],
+			[0, 3, 0, "Select which sample(s) are affected by Z."],
+			[0, 99, 0, "Envelope time."]
+		]
+	},
+	{
+		"algorithm": "J-1",
+		"name": "MIDI File Playback (Clocked)",
+		"category": "MIDI & External Control",
+		"video": "HmQVkyjWtJE",
+		"io": [
+			"X is clock",
+			"Y is retrigger CV",
+			"Z selects the MIDI file",
+			"A is pitch CV output",
+			"B is gate output"
+		],
+		"extra": "Outputs MIDI",
+		"parameters": []
+	},
+	{
+		"algorithm": "J-3",
+		"name": "MIDI File Playback (Free Running)",
+		"category": "MIDI & External Control",
+		"video": "no video",
+		"io": [
+			"X is V/octave speed CV",
+			"Y is retrigger CV",
+			"Z sets the playback speed",
+			"A is pitch CV output",
+			"B is gate output"
+		],
+		"extra": "Outputs MIDI",
+		"parameters": [
+			[0, 31, 0, "Selects the MIDI file."]
+		]
+	},
+	{
+		"algorithm": "J-4",
+		"name": "Audio Playback with End CV",
+		"category": "Sample Players",
+		"video": "80pRG39kqlA",
+		"io": [
+			"X is retrigger or end position CV",
+			"Y is start position CV",
+			"Z is end position or retrigger CV",
+			"A is left audio output",
+			"B is right audio output"
+		],
+		"extra": "Receives MIDI",
+		"parameters": [
+			[0, 99, 0, "Folder."],
+			[0, 99, 0, "Selects the sample."],
+			[0, 99, 0, "Envelope time."]
+		]
+	},
+	{
+		"algorithm": "J-5",
+		"name": "Audio Recorder",
+		"category": "Recorders",
+		"video": "yzVoSIUWMJ0",
+		"io": [
+			"X is left audio input",
+			"Y is right audio input",
+			"Z controls recording",
+			"A is left audio output",
+			"B is right audio output"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "J-6",
+		"name": "Multisample Audio Playback",
+		"category": "Sample Players",
+		"video": "vaRF-YQtkFM",
+		"io": [
+			"X is retrigger CV",
+			"Y is V/octave pitch CV",
+			"Z is tune ±0.5 octaves",
+			"A is left audio output",
+			"B is right audio output"
+		],
+		"extra": "(Receives MIDI?)",
+		"parameters": [
+			[0, 99, 0, "Folder."],
+			[-8, 8, 0, "Octave shift."],
+			[0, 99, 0, "Envelope time."],
+			[-1, 4, -1, "MIDI mode."]
+		]
+	},
+	{
+		"algorithm": "J-7",
+		"name": "Mono Audio Recorder",
+		"category": "Recorders",
+		"video": "no video",
+		"io": [
+			"X is audio input",
+			"Y is unused",
+			"Z controls recording",
+			"A is left audio output",
+			"B is right audio output"
+		],
+		"extras": false,
+		"parameters": []
+	},
+	{
+		"algorithm": "J-8",
+		"name": "Audio Playback with Crossfade",
+		"category": "Sample Players",
+		"video": "x3bmglh36mE",
+		"io": [
+			"X is gate/clock CV",
+			"Y is V/octave pitch CV",
+			"Z selects the sample",
+			"A is left audio output",
+			"B is right audio output"
+		],
+		"extra": "(Receives MIDI?)",
+		"parameters": [
+			[0, 99, 0, "Folder."],
+			[-8, 8, 0, "Octave shift."],
+			[0, 99, 50, "Crossfade time."],
+			[0, 2, 1, "Gate mode."]
+		]
+	},
+	{
+		"algorithm": "K-1",
+		"name": "Wavetable VCO",
+		"category": "Oscillators",
+		"video": "piNLUIcoEoI",
+		"io": [
+			"X is V/Oct pitch input",
+			"Y is wavetable input",
+			"Z is tune ±0.5 octaves",
+			"A is wavetable output",
+			"B is sub-octave square output"
+		],
+		"extra": "(Receives MIDI?)",
+		"parameters": [
+			[0, 99, 0, "Chooses the wavetable."],
+			[-16, 8, 0, "Octave shift."],
+			[-31, 31, 0, "Y offset."]
+		]
+	},
+	{
+		"algorithm": "K-5",
+		"name": "Programmable Quantizer",
+		"category": "Quantizers",
+		"video": "fCVvjwelGU8",
+		"io": [
+			"A = quantized( X+Y )",
+			"B = trigger on note change",
+			"Z is slew",
+			"Y = pitch or trigger"
+		],
+		"extra": "Outputs MIDI",
+		"parameters": [
+			[0, 31, 0, "Scale."],
+			[-1, 31, 31, "Input X attenuation."],
+			[-2, 31, 31, "Input Y attenuation."],
+			[-31, 31, 0, "Transpose."],
+			[0, 31, 0, "Offset."]
+		]
+	},
+	{
+		"algorithm": "L-1",
+		"name": "Stereo Reverb",
+		"category": "Reverb",
+		"video": "mF5mmdAhE30",
+		"io": [
+			"X is left input",
+			"Y is right input",
+			"A is left output",
+			"B is right output",
+			"Z is wet/dry"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 31, 15, "Size."],
+			[0, 31, 23, "Feedback."],
+			[0, 5, 1, "Character."],
+			[-1, 31, 8, "Lowpass filter."]
+		]
+	},
+	{
+		"algorithm": "L-2",
+		"name": "Mono-to-Stereo Reverb",
+		"category": "Reverb",
+		"video": "mF5mmdAhE30",
+		"io": [
+			"X is audio input",
+			"Y is feedback CV",
+			"A is left output",
+			"B is right output",
+			"Z is wet/dry"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 31, 15, "Size."],
+			[0, 31, 23, "Feedback."],
+			[0, 5, 1, "Character."],
+			[-1, 31, 8, "Lowpass filter."]
+		]
+	},
+	{
+		"algorithm": "L-3",
+		"name": "Dual Reverb",
+		"category": "Reverb",
+		"video": "mF5mmdAhE30",
+		"io": [
+			"A is X plus reverb",
+			"B is Y plus reverb",
+			"Z is wet/dry"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 31, 15, "Size."],
+			[0, 31, 23, "Feedback."],
+			[0, 5, 1, "Character."],
+			[-1, 31, 8, "Lowpass filter."]
+		]
+	},
+	{
+		"algorithm": "L-5",
+		"name": "Stereo Chorus",
+		"category": "Modulation Effects",
+		"video": "snOrmmR5Wfc",
+		"io": [
+			"X is audio input",
+			"Y is LFO rate",
+			"A is left output",
+			"B is right output",
+			"Z is wet/dry"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 31, 8, "LFO depth."],
+			[-31, 31, 0, "Y offset."],
+			[-31, 31, 0, "Feedback."],
+			[-1, 31, -1, "Lowpass filter."]
+		]
+	},
+	{
+		"algorithm": "L-6",
+		"name": "Mono Chorus",
+		"category": "Modulation Effects",
+		"video": "snOrmmR5Wfc",
+		"io": [
+			"X is audio input",
+			"Y is LFO rate",
+			"A is blended output",
+			"B is wet output",
+			"Z is wet/dry"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 31, 8, "LFO depth."],
+			[-31, 31, 0, "Y offset."],
+			[-31, 31, 0, "Feedback."],
+			[-1, 31, -1, "Lowpass filter."]
+		]
+	},
+	{
+		"algorithm": "L-8",
+		"name": "Gate",
+		"category": "Envelopes & VCA",
+		"video": "SSGc-mr-Q84",
+		"io": [
+			"X is left input",
+			"Y is right input",
+			"A is left output",
+			"B is right output",
+			"Z is threshold"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 99, 0, "Attack time."],
+			[0, 99, 0, "Hold time."],
+			[0, 99, 0, "Release time."],
+			[0, 99, 0, "Lookahead."]
+		]
+	},
+	{
+		"algorithm": "M-1",
+		"name": "Delayed LFO",
+		"category": "LFO",
+		"video": "Zq6EXlRmh_g",
+		"io": [
+			"A and B are LFOs, ramps, or ramped LFOs",
+			"X is trigger input",
+			"Y is ramp time",
+			"Z is LFO speed"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 6, 1, "Output type A."],
+			[0, 6, 0, "Output type B."],
+			[-32, 32, 0, "LFO speed range."],
+			[-32, 32, 0, "Ramp time range."],
+			[-32, 32, 32, "Attenuverter A."],
+			[-32, 32, 32, "Attenuverter B."]
+		]
+	},
+	{
+		"algorithm": "M-2",
+		"name": "Scaled LFO",
+		"category": "LFO",
+		"video": "NcWLVdAZ50M",
+		"io": [
+			"A and B are LFOs",
+			"X and Y are min/max or offset/scale",
+			"Z is LFO speed"
+		],
+		"extras": false,
+		"parameters": [
+			[0, 6, 1, "Output type A."],
+			[0, 6, 0, "Output type B."],
+			[-32, 32, 0, "LFO speed range."],
+			[0, 1, 0, "Mode."],
+			[-48, 48, 0, "X Offset."],
+			[-48, 48, 0, "Y Offset."]
+		]
+	}
+]
