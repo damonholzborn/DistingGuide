@@ -44,39 +44,66 @@ color: var(--hl-color);
 h3 {
     color: var(--blue);
     font-size: 20px;
-    font-weight: bold;
+    /* font-size: 22px; */
+    font-weight: normal;
     transition: all 0.3s ease-out;
     margin-top: 0px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    /* text-indent: 2em; */
+}
+
+.category_header {
+    color: var(--blue);
+    background-color: #222;
+    font-size: 22px;
+    margin-bottom: 24px;
+    padding: 6px;
+    margin-left: -6px;
+    /* text-decoration: underline; */
+}
+
+.category_separator {
+    height: 32px;
 }
 
 h3.listing {
-    font-size: 18px;
     font-weight: normal;
     color: var(--red);
+}
+
+.title {
+    padding-left: 1.83em;
+    text-indent: -1.83em;
+    /* margin-top: -10px; */
+    
+    /* float: left; */
 }
 
 .videolink {
     transition: all 0.3s ease-out;
     opacity: 1;
-    visibility: visible;
-    margin-left: 14px;
-}
-
-.videoarrow {
-    color: white;
-    font-size: .9em;
+    display: inline-block;
+    float: right;
+    /* visibility: visible; */
+    /* margin-left: 14px; */
 }
 
 .videoicon {
+    /* transition: all 0.3s ease-out;
+    opacity: 1; */
     height: 17px;
-    margin-bottom: -2px;
+    /* float: right; */
+    padding-top: 5px;
+    padding-left: 8px;
 }
 
 .transparent {
-    opacity: 1;
-    visibility: hidden;
+    opacity: 0;
+    /* visibility: hidden; */
+}
 
+.pointy {
+    cursor: pointer;
 }
 
 a {

@@ -1,8 +1,7 @@
 var algorithmList;
-var displayMenuArea;
 var displaySelect;
-var backButtonArea;
 var listArea;
+var currentDisplay;
 
 var nameIndex = {};
 var nameList = [];
@@ -41,11 +40,9 @@ var categoryOrder = [
     'Utility'
 ];
 
-var currentDisplay = 'by number';
-
 window.onload = function() {
-    displayMenuArea = document.getElementById('display_menu');
-    backButtonArea = document.getElementById('back_button');
+    currentDisplay = 'by category';
+
     displaySelect = document.getElementById('display_select');
     listArea = document.getElementById('list');
 
@@ -53,9 +50,6 @@ window.onload = function() {
         currentDisplay = displaySelect.value;
         writeList();
     };
-    backButtonArea.onclick = function() {
-        writeList();
-    }
 
     getJSON('algorithms.json', function(response) { 
         algorithmList = response;
@@ -69,44 +63,32 @@ window.onload = function() {
         displaySelect.value = currentDisplay;
         writeList();
     });
-
-}
-
-function displayAllByNumber() {
-    clearListArea();
-    showCategoryMenu();
-    for (var i = 0; i < algorithmList.length; i++) {
-        displayAlgorithm(algorithmList[i]);
-    }
 }
 
 function displayListByNumber() {
     clearListArea();
-    showCategoryMenu();
     for (var i = 0; i < algorithmList.length; i++) {
         var algorithm = algorithmList[i];
-        // displayName(algorithm);
         displayAlgorithm(algorithm);
-        document.getElementById(algorithm.algorithm + '_info').classList.add('hide');
     }
 }
 
 function displayListByName() {
     clearListArea();
-    showCategoryMenu();
     for (var i = 0; i < nameList.length; i++) {        
-        displayName(algorithmList[nameIndex[nameList[i]]]);
+        displayAlgorithm(algorithmList[nameIndex[nameList[i]]]);
     }
 }
 
 function displayListByCategory() {
     clearListArea();
-    showCategoryMenu();
     for (var i = 0; i < categoryOrder.length; i++) {
         var category = categoryOrder[i];
         var categoryHeading = categoryList[category].heading;
         
         var categoryHeader = document.createElement('h3');
+        categoryHeader.classList.add('category_header');
+
         if (categoryHeading) {
             categoryHeader.innerHTML = categoryList[category].heading + ' - ' + category;
         }
@@ -117,16 +99,17 @@ function displayListByCategory() {
 
         var algorithms = categoryList[category].algorithms;
         for (var j = 0; j < algorithms.length; j++) {
-            displayName(algorithmList[algorithms[j]]);
+            displayAlgorithm(algorithmList[algorithms[j]]);
         }
+
+        var categorySeparator = document.createElement('div');
+        categorySeparator.classList.add('category_separator');
+        listArea.appendChild(categorySeparator);
     }
 }
 
-
 function displayAlgorithm(info) {
     var algoDiv = document.createElement('div');
-    // algoDiv.id = info.algorithm + '_info';
-    // algoDiv.classList.add('alfo_info');
 
     var infoName = info.algorithm + '_info';
     var headerName = info.algorithm + '_header';
@@ -136,7 +119,18 @@ function displayAlgorithm(info) {
     var algoHeader = document.createElement('h3');
     algoHeader.id = headerName;
     algoHeader.classList.add('listing');
-    algoTitle = document.createElement('span');
+
+    var videoLink = document.createElement('a');
+    videoLink.id = videoLinkName;
+    videoLink.classList.add('videolink');
+    videoLink.classList.add('transparent');
+    videoLink.setAttribute('href', 'https://www.youtube.com/watch?v=' + info.video);
+    videoLink.setAttribute('target', '_blank');
+    videoLink.innerHTML = '<img src="yt_icon_rgb.png" class="videoicon">';
+    algoHeader.appendChild(videoLink);
+
+    algoTitle = document.createElement('div');
+    algoTitle.classList.add('pointy', 'title');
     algoTitle.innerHTML = info.algorithm + ' ' + info.name + ' ';
     algoTitle.onclick = function () {
         var infoDiv = document.getElementById(infoName);
@@ -159,25 +153,14 @@ function displayAlgorithm(info) {
     }; 
     algoHeader.appendChild(algoTitle);
 
-    var videoLink = document.createElement('a');
-    videoLink.id = videoLinkName;
-    videoLink.classList.add('videolink');
-    videoLink.classList.add('transparent');
-    videoLink.setAttribute('href', 'https://www.youtube.com/watch?v=' + info.video);
-    videoLink.setAttribute('target', '_blank');
-    // videoLink.innerHTML = '( <span class="videoarrow">&#x25ba;</span> )';
-    videoLink.innerHTML = '<img src="yt_icon_rgb.png" class="videoicon">';
-    algoHeader.appendChild(videoLink);
     algoDiv.appendChild(algoHeader);
 
     // ********* Info Div *********
-
     var infoDiv = document.createElement('div');
     infoDiv.id = info.algorithm + '_info';
     infoDiv.classList.add('algo_info');
     infoDiv.style.height = '0px';
     infoDiv.setAttribute('data-collapsed', 'true');
-
 
     // ********* IO *********
     var ioP = document.createElement('p');
@@ -275,7 +258,6 @@ function displayAlgorithm(info) {
 
         }
         infoDiv.appendChild(paramTable);    
-
     }
     else {
         var noParam = document.createElement('p');
@@ -284,53 +266,12 @@ function displayAlgorithm(info) {
         infoDiv.appendChild(noParam);
     }
     
-
-
     algoDiv.appendChild(infoDiv);
     listArea.appendChild(algoDiv);
-
-}
-
-function displayName(info, index) {
-    var listDiv = document.createElement('div');
-    var infoName = info.algorithm + '_info';
-    var nameText = info.algorithm + '_name';
-    listDiv.id = nameText;
-
-    listDiv.classList.add('list_items');
-
-    var nameLink = document.createElement('a');
-    nameLink.setAttribute('href', 'sfdafsdfa');
-    nameLink.innerHTML = info.algorithm + ' ' + info.name + '<br>';
-    nameLink.onclick = function () { 
-        document.getElementById(infoName).classList.remove('hide');
-        document.getElementById(nameText).classList.add('hide');
-        // clearListArea();
-        // hideCategoryMenu();
-        // displayAlgorithm(info);
-        return false;
-    }; 
-
-    listDiv.appendChild(nameLink);
-
-    listArea.appendChild(listDiv);
-}
-
-function hideCategoryMenu() {
-    displayMenuArea.classList.add('hide');
-    backButtonArea.classList.remove('hide');
-}
-
-function showCategoryMenu() {
-    displayMenuArea.classList.remove('hide');
-    backButtonArea.classList.add('hide');
 }
 
 function writeList() {
-    if (currentDisplay == 'show all') {
-        displayAllByNumber();        
-    }
-    else if (currentDisplay == 'by number') {
+    if (currentDisplay == 'by number') {
         displayListByNumber()
     }
     else if (currentDisplay == 'by name') {
@@ -358,50 +299,4 @@ function getJSON(url, success) {
     request.responseType = 'json';
     request.send();    
 }
-
-function collapseSection(element) {
-    // get the height of the element's inner content, regardless of its actual size
-    var sectionHeight = element.scrollHeight;
-    
-    // temporarily disable all css transitions
-    var elementTransition = element.style.transition;
-    element.style.transition = '';
-    
-    // on the next frame (as soon as the previous style change has taken effect),
-    // explicitly set the element's height to its current pixel height, so we 
-    // aren't transitioning out of 'auto'
-    requestAnimationFrame(function() {
-      element.style.height = sectionHeight + 'px';
-      element.style.transition = elementTransition;
-      
-      // on the next frame (as soon as the previous style change has taken effect),
-      // have the element transition to height: 0
-      requestAnimationFrame(function() {
-        element.style.height = 0 + 'px';
-      });
-    });
-    
-    // mark the section as "currently collapsed"
-    element.setAttribute('data-collapsed', 'true');
-  }
-  
-  function expandSection(element) {
-    // get the height of the element's inner content, regardless of its actual size
-    var sectionHeight = element.scrollHeight;
-    
-    // have the element transition to the height of its inner content
-    element.style.height = sectionHeight + 'px';
-  
-    // when the next css transition finishes (which should be the one we just triggered)
-    element.addEventListener('transitionend', function(e) {
-      // remove this event listener so it only gets triggered once
-      element.removeEventListener('transitionend', arguments.callee);
-      
-      // remove "height" from the element's inline styles, so it can return to its initial value
-      element.style.height = null;
-    });
-    
-    // mark the section as "currently not collapsed"
-    element.setAttribute('data-collapsed', 'false');
-  }
 
