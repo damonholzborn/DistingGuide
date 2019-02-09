@@ -76,30 +76,24 @@ h3.listing {
     text-indent: -1.83em;
     /* margin-top: -10px; */
     
-    /* float: left; */
+    float: left;
 }
 
 .videolink {
     transition: all 0.3s ease-out;
     opacity: 1;
     display: inline-block;
-    float: right;
-    /* visibility: visible; */
-    /* margin-left: 14px; */
+    margin-left: 48px;
 }
 
 .videoicon {
-    /* transition: all 0.3s ease-out;
-    opacity: 1; */
     height: 17px;
-    /* float: right; */
     padding-top: 5px;
     padding-left: 8px;
 }
 
 .transparent {
     opacity: 0;
-    /* visibility: hidden; */
 }
 
 .pointy {
@@ -180,6 +174,7 @@ td, th {
 .algo_info {
     overflow: hidden;
     transition: height 0.3s ease-out;
+    padding-left: 24px;
     /* margin-bottom: 140px; */
 }
 
@@ -208,3 +203,18 @@ select {
    -moz-border-radius: 6px;
    border-radius: 6px;
 }
+
+/* ********* Media Queries ********* */
+
+
+@media only screen and (max-width: 450px) {
+    .title {
+        float: none;
+    }
+    
+    .videolink {
+        margin-left: 14px;
+        float: right;
+    }
+    
+  }

@@ -6,13 +6,13 @@
 		"video": "mCFaTt6vNpk",
 		"io": [
 			"A = X + Y + offset, or X + offset",
-			"B = X - Y – offset, or Y - offset",
+			"B = X – Y – offset, or Y ± offset",
 			"offset = ±10V in 1V steps derived from Z"
 		],
 		"extra": "Knob recorder enabled",
 		"parameters": [	
 			[0, 1, 0, "Z Mode."],
-			[0, 1, 0, "Sum Mode."]
+			[0, 2, 0, "Sum Mode."]
 		]
 	},
 	{
@@ -40,7 +40,7 @@
 			"B = abs( X - Y ) or abs( Y )",
 			"Z selects mode"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -53,7 +53,7 @@
 			"B = max( X, Y )",
 			"Z is gate"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -66,7 +66,7 @@
 			"B = log2( Y / scale )",
 			"Z is Hz/V scale, centred on 1kHz"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -99,7 +99,7 @@
 			"B = inverted gate",
 			"Z is hysteresis"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -121,14 +121,15 @@
 		"category": "Randomness & Patterns",
 		"video": "x8yDMQqE-yA",
 		"io": [
-			"A = X when Y exceeds 1V",
+			"A = X when Y exceeds 1V ",
 			"B = noise ±8V",
 			"Z is slew rate"
 		],
-		"extras": false,
-		"parameters": [
+		"extra": false,
+		"parameters": [	
 			[0, 1, 0, "Mode."],
-			[0, 31, 0, "Offset."]
+			[0, 31, 0, "Offset."],
+			[0, 3, 1, "Noise colour."]
 		]
 	},
 	{
@@ -141,7 +142,7 @@
 			"B = log slew rate limited ( X + Y )",
 			"Z is slew rate"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[-1, 32, -1, "Up slew."],
 			[-1, 32, -1, "Down slew."]
@@ -157,7 +158,7 @@
 			"B = envelope dervied from X",
 			"Z is slew rate for envelope"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -190,7 +191,7 @@
 			"A is saw -> sine -> triangle",
 			"B is pulse -> square -> pulse"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[-1, 31, 31, "Sets an attenuation for output A."],
 			[-1, 31, 31, "Sets an attenuation for output B."],
@@ -221,15 +222,18 @@
 		"category": "Oscillators",
 		"video": "5JPUuaPaxxo",
 		"io": [
-			"X is V/Oct pitch input Y is linear FM input Z is tune ±0.5 octaves",
-			"A is sine",
-			"B is saw"
+			"X is V/Oct pitch input",
+			"Y is linear FM input",
+			"Z is tune ±0.5 octaves",
+			"A & B are selectable output waveforms"
 		],
-		"extras": false,
-		"parameters": [
+		"extra": false,
+		"parameters": [	
 			[-16, 8, 0, "Octave shift."],
-			[-1, 31, 31, "Sets an attenuation for output A."],
-			[-1, 31, 31, "Sets an attenuation for output B."]
+			[0, 32, 32, "Sets an attenuation for output A."],
+			[0, 32, 32, "Sets an attenuation for output B."],
+			[0, 4, 1, "Type A."],
+			[0, 4, 3, "Type B."]
 		]
 	},
 	{
@@ -241,15 +245,15 @@
 			"X is V/Oct pitch input",
 			"Y is waveshape/PWM",
 			"Z is tune ±0.5 octaves",
-			"A is saw -> tri -> saw",
-			"B is pulse -> square -> pulse"
+			"A & B are selectable output waveforms"
 		],
-		"extras": false,
-		"parameters": [
+		"extra": false,
+		"parameters": [	
 			[-16, 8, 0, "Octave shift."],
-			[-1, 31, 31, "Sets an attenuation for output A."],
-			[-1, 31, 31, "Sets an attenuation for output B."],
-			[-31, 31, 0, "Offset for input Y (manual shape control)."]
+			[0, 32, 32, "Sets an attenuation for output A."],
+			[0, 32, 32, "Sets an attenuation for output B."],
+			[-32, 32, 0, "Offset for input Y (manual shape control)."],
+			[0, 2, 0, "Selects output waveforms."]
 		]
 	},
 	{
@@ -279,7 +283,7 @@
 			"A is delay output",
 			"B is delay output plus input signal"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[-31, 31, 0, "Applies an offset to the Y input."]
 		]
@@ -348,7 +352,7 @@
 			"A is audio output",
 			"B is envelope output"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 1, 0, "Selects the filter bank."]
 		]
@@ -365,7 +369,7 @@
 			"A is phase-shifted output plus input signal",
 			"B is phase-shifted output"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[-31, 31, 0, "Applies an offset to the Y input."],
 			[1, 10, 10, "Sets the number of phaser stages."]
@@ -382,7 +386,7 @@
 			"A is signal output",
 			"B is comparator output"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[-31, 31, 0, "Applies an offset to the Y input."],
 			[0, 7, 0, "Selects the bit reduction mode."],
@@ -401,7 +405,7 @@
 			"A = output according to mode",
 			"B = output according to mode"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 43, 43, "Tape length."],
 			[-9, 9, 0, "Fine length control."],
@@ -421,7 +425,7 @@
 			"A = animated output",
 			"B = square waves output"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[-1, 31, 11, "LFO depth."],
 			[-31, 31, 0, "Y offset."],
@@ -441,7 +445,7 @@
 			"A is filter output LP->BP->HP",
 			"B is filter output HP->BP->LP"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 31, 0, "Filter resonance."]
 		]
@@ -458,7 +462,7 @@
 			"A is low pass filter output",
 			"B is high pass filter output"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -473,7 +477,7 @@
 			"A is low pass filter output",
 			"B is band pass filter output"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -488,7 +492,7 @@
 			"A is band pass filter output",
 			"B is high pass filter output"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -503,7 +507,7 @@
 			"A is band pass filter output",
 			"B is notch filter output"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -514,18 +518,20 @@
 		"io": [
 			"X is trigger input",
 			"Y is trigger input",
-			"Z sets the envelope times",
+			"Z sets the envelope times ",
 			"A is envelope output",
 			"B is envelope output"
 		],
 		"extra": "Press Z to trigger",
-		"parameters": [
+		"parameters": [	
 			[0, 2, 0, "Trigger Mode."],
 			[0, 1, 0, "Z Mode."],
 			[-32, 32, 32, "Output A Attenuverter."],
 			[-32, 32, 32, "Output B Attenuverter."],
 			[-32, 32, 0, "Output A Offset."],
-			[-32, 32, 0, "Output B Offset."]
+			[-32, 32, 0, "Output B Offset."],
+			[0, 32, 26, "Attack shape."],
+			[0, 32, 10, "Release shape."]
 		]
 	},
 	{
@@ -561,7 +567,7 @@
 			"Z sets the envelope times A is envelope output A",
 			"B is envelope output B"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 2, 0, "Trigger Mode."],
 			[0, 1, 0, "Z Mode."],
@@ -569,6 +575,70 @@
 			[-32, 32, 32, "Output B Attenuverter."],
 			[-32, 32, 0, "Output A Offset."],
 			[-32, 32, 0, "Output B Offset."]
+		]
+	},
+	{
+		"algorithm": "E-4",
+		"name": "Stereo Compressor",
+		"category": "Compression",
+		"video": "I6ej41SvmwM",
+		"io": [
+			"X is left input",
+			"Y is right input",
+			"A is left output",
+			"B is right output",
+			"Z is compression ratio"
+		],
+		"extra": false,
+		"parameters": [	
+			[-36, 0, -12, "Threshold."],
+			[0, 99, 20, "Attack time."],
+			[0, 99, 20, "Release time."],
+			[-1, 36, 0, "Make-up gain."],
+			[0, 99, 0, "Lookahead."]
+		]
+	},
+	{
+		"algorithm": "E-5",
+		"name": "Side-chain Compressor",
+		"category": "Compression",
+		"video": "1YRjXeIzMfo",
+		"io": [
+			"X is left input",
+			"Y is right input",
+			"A is left output",
+			"B is right output ",
+			"Z is side-chain input"
+		],
+		"extra": false,
+		"parameters": [	
+			[-36, 0, -12, "Threshold."],
+			[0, 99, 20, "Attack time."],
+			[0, 99, 20, "Release time."],
+			[-1, 36, 0, "Make-up gain."],
+			[0, 99, 0, "Lookahead."],
+			[0, 99, 50, "Compression ratio."]
+		]
+	},
+	{
+		"algorithm": "E-6",
+		"name": "Mono Compressor",
+		"category": "Compression",
+		"video": "EbfoyWgwdMg",
+		"io": [
+			"X is audio input",
+			"Y is side-chain input",
+			"A is audio output",
+			"B is gain reduction output ",
+			"Z is compression ratio"
+		],
+		"extra": false,
+		"parameters": [	
+			[-36, 0, -12, "Threshold."],
+			[0, 99, 20, "Attack time."],
+			[0, 99, 20, "Release time."],
+			[-1, 36, 0, "Make-up gain."],
+			[0, 99, 0, "Lookahead."]
 		]
 	},
 	{
@@ -583,7 +653,7 @@
 			"A is 1.2V/octave output",
 			"B is gate/trigger output"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[-8, 8, 0, "Octave shift."]
 		]
@@ -600,7 +670,7 @@
 			"A is 1V/octave output",
 			"B is trigger output"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[-8, 8, 0, "Octave shift."]
 		]
@@ -618,10 +688,12 @@
 			"B is envelope output"
 		],
 		"extra": "Tap tempo enabled",
-		"parameters": [
+		"parameters": [	
 			[-15, 8, 0, "Delay time multiplier."],
 			[-32, 32, 32, "Output A Attenuverter."],
-			[-32, 32, 32, "Output B Attenuverter."]
+			[-32, 32, 32, "Output B Attenuverter."],
+			[0, 32, 26, "Attack shape."],
+			[0, 32, 10, "Decay shape."]
 		]
 	},
 	{
@@ -632,15 +704,17 @@
 		"io": [
 			"X is clock input",
 			"Y is gate input",
-			"Z sets the envelope shape",
+			"Z sets the envelope shape ",
 			"A is envelope output",
 			"B is envelope output"
 		],
 		"extra": "Tap tempo enabled",
-		"parameters": [
+		"parameters": [	
 			[-15, 8, 0, "Delay time multiplier."],
 			[-32, 32, 32, "Output A Attenuverter."],
-			[-32, 32, 32, "Output B Attenuverter."]
+			[-32, 32, 32, "Output B Attenuverter."],
+			[0, 32, 26, "Attack shape."],
+			[0, 32, 10, "Decay shape."]
 		]
 	},
 	{
@@ -651,15 +725,17 @@
 		"io": [
 			"X is clock input",
 			"Y is trigger input",
-			"Z sets the envelope shape",
+			"Z sets the envelope shape ",
 			"A is envelope output",
 			"B is envelope output"
 		],
 		"extra": "Tap tempo enabled",
-		"parameters": [
+		"parameters": [	
 			[-15, 8, 0, "Delay time multiplier."],
 			[-32, 32, 32, "Output A Attenuverter."],
-			[-32, 32, 32, "Output B Attenuverter."]
+			[-32, 32, 32, "Output B Attenuverter."],
+			[0, 32, 26, "Attack shape."],
+			[0, 32, 10, "Decay shape."]
 		]
 	},
 	{
@@ -675,10 +751,12 @@
 			"B is VCA output"
 		],
 		"extra": "Tap tempo enabled",
-		"parameters": [
+		"parameters": [	
 			[-15, 8, 0, "Delay time multiplier."],
 			[-32, 32, 32, "Output A Attenuverter."],
-			[-32, 32, 32, "Output B Attenuverter."]
+			[-32, 32, 32, "Output B Attenuverter."],
+			[0, 32, 26, "Attack shape."],
+			[0, 32, 10, "Decay shape."]
 		]
 	},
 	{
@@ -693,7 +771,7 @@
 			"A is unipolar output",
 			"B is bipolar output"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 1, 0, "Direction."],
 			[1, 16, 8, "Length."],
@@ -751,7 +829,7 @@
 			"A is trigger output A",
 			"B is trigger output B"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[1, 16, 8, "Length A."],
 			[1, 16, 8, "Length B."]
@@ -769,7 +847,7 @@
 			"A is output 1",
 			"B is output 2"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -784,7 +862,7 @@
 			"A is output 1",
 			"B is output 2"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -798,7 +876,7 @@
 			"B is square output",
 			"Z sets the amplitude of A & B"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 11, 0, "Semitone."],
 			[-1, 9, 4, "Octave"]
@@ -815,7 +893,7 @@
 			"B is square output",
 			"Z sets the amplitude of A & B"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -830,7 +908,7 @@
 			"B is a sine wave at the tracked pitch",
 			"Z sets the amplitude of B"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -896,11 +974,12 @@
 			"A = Mix of X & Y according to Z",
 			"B = Inverted mix of X & Y according to Z, or LFO"
 		],
-		"extras": false,
-		"parameters": [
-			[0, 2, 0, "Crossfade/pan law."],
+		"extra": "Knob recorder enabled",
+		"parameters": [	
+			[0, 3, 0, "Crossfade/pan law."],
 			[0, 2, 0, "Clip mode."],
-			[0, 99, 0, "LFO speed."]
+			[-1, 99, 0, "Output B option/LFO speed."],
+			[0, 32, 32, "Output B attenuation."]
 		]
 	},
 	{
@@ -912,7 +991,7 @@
 			"A = X when Z exceeds 1V",
 			"B = Y when Z exceeds 1V"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 1, 0, "Mode."],
 			[0, 31, 0, "Offset."]
@@ -946,7 +1025,7 @@
 			"B = quantized( Y )",
 			"Z is trigger"
 		],
-		"extras": "Outputs MIDI",
+		"extra": "Outputs MIDI",
 		"parameters": [
 			[-1, 31, 31, "Input X attenuation."],
 			[-1, 31, 31, "Input Y attenuation."],
@@ -967,7 +1046,7 @@
 			"Y is reset input",
 			"Z sets the 'pulses' for pattern 2"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[1, 16, 16, "Steps."],
 			[1, 16, 4, "Pulses (pattern 1)."],
@@ -985,7 +1064,7 @@
 			"B is pulse triggered by Y",
 			"Z function depends on parameter setting"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 6, 0, "Z mode."],
 			[0, 12, 6, "Range."],
@@ -1003,7 +1082,7 @@
 			"B is noise, optionally scaled by Y",
 			"Z is blend"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[-1, 3, -1, "Type A."],
 			[-1, 3, -1, "Type B."],
@@ -1019,18 +1098,17 @@
 		"io": [
 			"X is pitch CV input",
 			"Y is trigger input or pitch CV input ",
-			"Z sets the interval between A & B ",
+			"Z sets the interval between A & B",
 			"A is quantized CV out",
 			"B is quantized CV out"
 		],
-		"extras": false,
-		"parameters": [
+		"extra": false,
+		"parameters": [	
 			["N/A", "N/A", "N/A", "Pattern."],
 			[0, 2, 0, "Scale."],
 			[-12, 12, 0, "Key."],
 			[0, 32, 32, "Input X attenuation."],
-			[-1, 31, -1, "Trigger mode and offset."],
-			[0, 32, 0, "Slew rate."]
+			[-32, 32, -32, "Trigger mode / offset / Y attenuation."]
 		]
 	},
 	{
@@ -1251,7 +1329,7 @@
 			"A is left audio output",
 			"B is right audio output"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -1286,7 +1364,7 @@
 			"A is left audio output",
 			"B is right audio output"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": []
 	},
 	{
@@ -1319,13 +1397,14 @@
 			"Y is wavetable input",
 			"Z is tune ±0.5 octaves",
 			"A is wavetable output",
-			"B is sub-octave square output"
+			"B is sub-octave square output or detuned output"
 		],
-		"extra": "(Receives MIDI?)",
-		"parameters": [
+		"extra": false,
+		"parameters": [	
 			[0, 99, 0, "Chooses the wavetable."],
 			[-16, 8, 0, "Octave shift."],
-			[-31, 31, 0, "Y offset."]
+			[-32, 32, 0, "Y offset."],
+			[-3, 99, 0, "Output B option/detune."]
 		]
 	},
 	{
@@ -1360,7 +1439,7 @@
 			"B is right output",
 			"Z is wet/dry"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 31, 15, "Size."],
 			[0, 31, 23, "Feedback."],
@@ -1380,7 +1459,7 @@
 			"B is right output",
 			"Z is wet/dry"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 31, 15, "Size."],
 			[0, 31, 23, "Feedback."],
@@ -1398,7 +1477,7 @@
 			"B is Y plus reverb",
 			"Z is wet/dry"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 31, 15, "Size."],
 			[0, 31, 23, "Feedback."],
@@ -1418,7 +1497,7 @@
 			"B is right output",
 			"Z is wet/dry"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 31, 8, "LFO depth."],
 			[-31, 31, 0, "Y offset."],
@@ -1438,7 +1517,7 @@
 			"B is wet output",
 			"Z is wet/dry"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 31, 8, "LFO depth."],
 			[-31, 31, 0, "Y offset."],
@@ -1458,7 +1537,7 @@
 			"B is right output",
 			"Z is threshold"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 99, 0, "Attack time."],
 			[0, 99, 0, "Hold time."],
@@ -1477,7 +1556,7 @@
 			"Y is ramp time",
 			"Z is LFO speed"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 6, 1, "Output type A."],
 			[0, 6, 0, "Output type B."],
@@ -1497,7 +1576,7 @@
 			"X and Y are min/max or offset/scale",
 			"Z is LFO speed"
 		],
-		"extras": false,
+		"extra": false,
 		"parameters": [
 			[0, 6, 1, "Output type A."],
 			[0, 6, 0, "Output type B."],
@@ -1505,6 +1584,25 @@
 			[0, 1, 0, "Mode."],
 			[-48, 48, 0, "X Offset."],
 			[-48, 48, 0, "Y Offset."]
+		]
+	},
+	{
+		"algorithm": "M-3",
+		"name": "Logic",
+		"category": "CV Processing",
+		"video": "xmPFQmb91uI",
+		"io": [
+			"A and B are logic outputs",
+			"X and Y are inputs",
+			"Z selects logical operation for output "
+		],
+		"extra": false,
+		"parameters": [	
+			[-2, 5, 0, "Output B logical operation."],
+			[-100, 100, 20, "Input X threshold."],
+			[-100, 100, 20, "Input Y threshold."],
+			[-100, 100, 10, "Input X hysteresis."],
+			[-100, 100, 10, "Input Y hysteresis."]
 		]
 	}
 ]
