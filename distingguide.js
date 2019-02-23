@@ -66,11 +66,6 @@ else {
     firstRun = false;
 }
 
-// fuck you service workers you fuckin' fuck
-// if ('serviceWorker' in navigator) {
-//     navigator.serviceWorker.register('/sw.js');
-// }
-
 window.onload = function() {
     headerArea = document.getElementById('header');
     menuButton = document.getElementById('menu_button');
@@ -103,7 +98,6 @@ window.onload = function() {
     menuButton.onclick = function () {
         if (!menuButton.classList.contains('open')) {
             menuButton.classList.add('open');
-            console.log(document.getElementById('welcome_message').clientHeight);
             headerArea.style.height = (document.getElementById('welcome_message').clientHeight + 130) + 'px';
         }
         else {

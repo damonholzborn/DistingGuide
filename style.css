@@ -353,15 +353,15 @@ td, th {
     }
 
     #welcome_text {
-        width: calc(100% - 240px);
+        width: calc(100% - 325px);
         max-width: 900px;
         float: left;
     }
 
     #contact_info {
-        width: 160px;
+        width: 225px;
         padding-left: 60px;
-        padding-right: 20px;
+        padding-right: 40px;
         float: right;
     }
 }
