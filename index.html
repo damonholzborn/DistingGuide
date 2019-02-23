@@ -4,23 +4,72 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Dist Works</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#2b5797">
+	<meta name="theme-color" content="#ffffff">
 
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script src="distworks.js"></script>
+	<title>Disting mk4 Quick Guide</title>
+
+	<script src="/distingguide.js"></script>
+	<link rel="stylesheet" type="text/css" href="/style.css">
 
 </head>
 <body>
  
-<header><h1>Dist Works</h1></header>
+<header id="header">
+	<div>
+		<h1>Disting mk4 Quick Guide</h1>
+	</div>
+
+	<div>
+		<h1 id="menu_button" class="pointy">?</h1>
+	</div>
+	
+	<div id="waveform_area">
+		<img src="waveform.png" id="header_waveform"> 
+	</div>
+
+	<div id="welcome_message">
+
+		<span id="welcome_text">
+			<p>Welcome to the Disting mk4 Quick Guide. This guide is a cheat sheet for the 97 algorithms included with the <a href="http://www.expert-sleepers.co.uk/disting.html" target="_blank">Expert Sleepers Disting mk4</a> (as of <a href="http://www.expert-sleepers.co.uk/distingfirmwareupdates.html" target="_blank">firmware update 4.10</a>). Since the bulk of the text of the manual is not repeated here, the Quick Guide is not designed to be your primary source for getting to know your Disting. Once you have a basic understanding of how the algorithms work, however, I hope that you’ll find this page a handy map to the ins, outs and parameter settings of each algorithm.</p>
+
+			<p>In addition to distilling the info to the basics, this guide is designed to be mobile-friendly, so you can view it without being tied to your computer. You can <a href="https://www.howtogeek.com/196087/how-to-add-websites-to-the-home-screen-on-any-smartphone-or-tablet/" target="_blank">save the guide to the homescreen of your mobile device</a>, and it will even work offline, making it available at your next internet-free retreat.</p>
+			
+			<p>If you find any errors or have any suggestions, please don’t hesitate to send them to damon@rustleworks.com. The code is open sourced under the MIT License. If you’d like to clone it for your own purposes, <a href="https://github.com/damonholzborn/DistingGuide" target="_blank">you can find the source at Github</a>.</p>
+			
+			<p>Happy Bleeping!</p>
+		</span>
+		<span id="contact_info">
+			<p>Damon Holzborn<br>
+			<a href="http://rustleworks.com" target="_blank">rustleworks.com</a><br>
+			<a href="http://damonholzborn.com" target="_blank">damonholzborn.com</a><br>
+			<a href="https://twitter.com/damonholzborn/" target="_blank">@damonholzborn</a> (Twitter)<br>
+			<a href="https://www.instagram.com/cnco/" target="_blank">@cnco</a> (Instagram)</p>
+			</span>
+	</div>
+</header>
 
 <div id="display_menu">
-	<span id="display_label">Display by:</span>
-	<select id="display_select">
-		<option value="by number">Number</option>
-		<option value="by name">Name</option>
-		<option value="by category">Category</option>
-	</select>
+	<p>
+		<span id="display_label">Show:</span>
+		<span id="show_all" class="display_link pointy">All</span> 
+		<span class=display_separator>|</span>
+		<span id="show_favorites" class="display_link pointy">Favorites</span>
+	</p>
+
+	<p>
+		<span id="display_label">List by:</span>
+		<span id="by_number" class="display_link pointy">Number</span> 
+		<span class=display_separator>|</span>
+		<span id="by_name" class="display_link pointy">Name</span>
+		<span class=display_separator>|</span>
+		<span id="by_category" class="display_link pointy">Category</span>
+	</p>
 </div>
 
 <div id="list"></div>

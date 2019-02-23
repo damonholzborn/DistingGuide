@@ -192,7 +192,7 @@
 			"B is pulse -> square -> pulse"
 		],
 		"extra": false,
-		"parameters": [
+		"parameters": [	
 			[-1, 31, 31, "Sets an attenuation for output A."],
 			[-1, 31, 31, "Sets an attenuation for output B."],
 			[-31, 31, 0, "Sets an offset for output A."],
@@ -212,8 +212,10 @@
 			"B is pulse -> square -> pulse"
 		],
 		"extra": "Tap tempo enabled",
-		"parameters": [
-			[-1, 31, 31, "Sets an attenuation for both LFO outputs."]
+		"parameters": [	
+			[-32, 32, 32, "Output A attenuverter."],
+			[-32, 32, 32, "Output B attenuverter."],
+			[-32, 32, 0, "Y Offset."]
 		]
 	},
 	{
@@ -394,6 +396,21 @@
 		]
 	},
 	{
+		"algorithm": "D-1",
+		"name": "DJ Filter",
+		"category": "Filters",
+		"video": "fII_lscKbBg",
+		"io": [
+			"X & Y are stereo audio input",
+			"A & B are stereo audio output",
+			"Z is filter sweep"
+		],
+		"extra": false,
+		"parameters": [	
+			[0, 31, 0, "Filter resonance."]
+		]
+	},	
+	{
 		"algorithm": "D-2",
 		"name": "Tape Delay",
 		"category": "Delay",
@@ -446,7 +463,8 @@
 			"B is filter output HP->BP->LP"
 		],
 		"extra": false,
-		"parameters": [
+		"parameters": [	
+			[-80, 80, 0, "Y Offset."],
 			[0, 31, 0, "Filter resonance."]
 		]
 	},
@@ -459,11 +477,12 @@
 			"X is audio input",
 			"Y is filter frequency",
 			"Z is filter resonance",
-			"A is low pass filter output",
-			"B is high pass filter output"
+			"A is low pass filter output B is high pass filter output"
 		],
 		"extra": false,
-		"parameters": []
+		"parameters": [	
+			[-80, 80, 0, "Y Offset."]
+		]
 	},
 	{
 		"algorithm": "D-6",
@@ -471,14 +490,16 @@
 		"category": "Filters",
 		"video": "SjmzSA3bYgc",
 		"io": [
-			"X is audio input",
+			"X isLP/BP Filter audio input",
 			"Y is filter frequency",
 			"Z is filter resonance",
 			"A is low pass filter output",
 			"B is band pass filter output"
 		],
 		"extra": false,
-		"parameters": []
+		"parameters": [	
+			[-80, 80, 0, "Y Offset."]
+		]
 	},
 	{
 		"algorithm": "D-7",
@@ -493,7 +514,9 @@
 			"B is high pass filter output"
 		],
 		"extra": false,
-		"parameters": []
+		"parameters": [	
+			[-80, 80, 0, "Y Offset."]
+		]
 	},
 	{
 		"algorithm": "D-8",
@@ -508,7 +531,9 @@
 			"B is notch filter output"
 		],
 		"extra": false,
-		"parameters": []
+		"parameters": [	
+			[-80, 80, 0, "Y Offset."]
+		]
 	},
 	{
 		"algorithm": "E-1",
@@ -772,11 +797,12 @@
 			"B is bipolar output"
 		],
 		"extra": false,
-		"parameters": [
+		"parameters": [	
 			[0, 1, 0, "Direction."],
 			[1, 16, 8, "Length."],
 			[0, 31, 0, "Slew rate."],
-			[-1, 31, 31, "Output attenuator."]
+			[-32, 32, 32, "Output attenuverter."],
+			[-32, 32, 0, "Offset."]
 		]
 	},
 	{
@@ -792,12 +818,13 @@
 			"B is trigger output"
 		],
 		"extra": "Outputs MIDI",
-		"parameters": [
+		"parameters": [	
 			[0, 1, 0, "Direction."],
 			[1, 16, 8, "Length."],
 			[0, 15, 0, "Scale."],
-			[-1, 31, 31, "Output attenuator."],
-			[0, 1, 0, "MIDI Gate"]
+			[-32, 32, 32, "Output attenuverter."],
+			[0, 1, 0, "MIDI Gate."],
+			[-48, 48, 0, "Transpose."]
 		]
 	},
 	{
@@ -1329,7 +1356,7 @@
 			"A is left audio output",
 			"B is right audio output"
 		],
-		"extra": false,
+		"extra": "Do not remove the MicroSD card or power off the disting while recording is active, as this could corrupt the card.",
 		"parameters": []
 	},
 	{
@@ -1408,6 +1435,43 @@
 		]
 	},
 	{
+		"algorithm": "K-2",
+		"name": "Clockable Wavetable LFO",
+		"category": "LFO",
+		"video": "PuntdFhIP8M",
+		"io": [
+			"X is clock input",
+			"Y is wavetable input",
+			"Z is integer multiplier/divider",
+			"A & B are wavetable output"
+		],
+		"extra": false,
+		"parameters": [	
+			[0, 99, 0, "Chooses the wavetable."],
+			[-32, 32, 0, "Y Offset."],
+			[-32, 32, 32, "Output A attenuverter."],
+			[-32, 32, -32, "Output B attenuverter."]
+		]
+	},
+	{
+		"algorithm": "K-3",
+		"name": "Wavetable Waveshaper",
+		"category": "Waveshaping",
+		"video": "8FHf27D2byA",
+		"io": [
+			"X is signal input",
+			"Y is wavetable input",
+			"Z is gain",
+			"A is wavetable output",
+			"B is complementary wavetable output"
+		],
+		"extra": false,
+		"parameters": [	
+			[0, 99, 0, "Chooses the wavetable."],
+			[-32, 32, 0, "Y Offset."]
+		]
+	},
+	{
 		"algorithm": "K-5",
 		"name": "Programmable Quantizer",
 		"category": "Quantizers",
@@ -1425,6 +1489,57 @@
 			[-2, 31, 31, "Input Y attenuation."],
 			[-31, 31, 0, "Transpose."],
 			[0, 31, 0, "Offset."]
+		]
+	},
+	{
+		"algorithm": "K-6",
+		"name": "Clockable SD Delay",
+		"category": "Delay",
+		"video": "N4I9GYGkyxE",
+		"io": [
+			"X is signal",
+			"Y is clock input",
+			"Z is feedback",
+			"A = output according to mode ",
+			"B = output according to mode"
+		],
+		"extra": "Tap tempo enabled",
+		"parameters": [	
+			[-15, 8, 0, "Delay time multiplier."],
+			[0, 8, 8, "Maximum feedback."],
+			[0, 2, 0, "Output mode."]
+		]
+	},
+	{
+		"algorithm": "K-7",
+		"name": "Stereo Clockable SD Delay",
+		"category": "Delay",
+		"video": "8zLDnygY-BA",
+		"io": [
+			"X & Y are stereo audio inputs ",
+			"A & B are stereo audio outputs ",
+			"Z is feedback"
+		],
+		"extra": "Tap tempo enabled",
+		"parameters": [	
+			[-15, 8, 0, "Delay time multiplier."],
+			[0, 8, 8, "Maximum feedback."]
+		]
+	},
+	{
+		"algorithm": "K-8",
+		"name": "Stereo Clockable SD Delay (Z clock)",
+		"category": "Delay",
+		"video": "SQrB0BS66B4",
+		"io": [
+			"X & Y are stereo audio inputs",
+			"A & B are stereo audio outputs",
+			"Z is clock input"
+		],
+		"extra": "Tap tempo enabled",
+		"parameters": [	
+			[-15, 8, 0, "Delay time multiplier."],
+			[0, 40, 16, "Feedback."]
 		]
 	},
 	{
@@ -1486,6 +1601,24 @@
 		]
 	},
 	{
+		"algorithm": "L-4",
+		"name": "Dual Vowel Filter",
+		"category": "Filters",
+		"video": "-ogn0JonlPY",
+		"io": [
+			"X & Y are inputs",
+			"A & B are outputs",
+			"Z is vowel selection"
+		],
+		"extra": false,
+		"parameters": [	
+			[-1, 8, 0, "Vowel A."],
+			[-1, 8, -1, "Vowel B."],
+			[-20, 0, 0, "BPF gain 2."],
+			[-20, 0, -6, "BPF gain 3."]
+		]
+	},
+	{
 		"algorithm": "L-5",
 		"name": "Stereo Chorus",
 		"category": "Modulation Effects",
@@ -1523,6 +1656,24 @@
 			[-31, 31, 0, "Y offset."],
 			[-31, 31, 0, "Feedback."],
 			[-1, 31, -1, "Lowpass filter."]
+		]
+	},
+	{
+		"algorithm": "L-7",
+		"name": "Mixer",
+		"category": "Utility",
+		"video": "XGwFlAScNOk",
+		"io": [
+			"X & Y are inputs ",
+			"A is left output",
+			"B is right output ",
+			"Z is pan for input X"
+		],
+		"extra": false,
+		"parameters": [	
+			[-40, 6, -6, "Input X gain."],
+			[-40, 6, -6, "Input Y gain."],
+			[-32, 32, 0, "Y pan."]
 		]
 	},
 	{
