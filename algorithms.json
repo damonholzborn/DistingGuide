@@ -132,7 +132,8 @@
 		"parameters": [
 			[0, 1, 0, "Mode."],
 			[0, 31, 0, "Offset."],
-			[0, 3, 1, "Noise colour."]
+			[0, 3, 1, "Noise colour."],
+			[0, 64, 0, "Noise X."]
 		]
 	},
 	{
@@ -275,7 +276,8 @@
 		],
 		"extra": "Knob recorder enabled (use S knob to access parameters)",
 		"parameters": [
-			[1, 12, 12, "Sets the offset divisor."]
+			[1, 12, 12, "Sets the offset divisor."],
+			[0, 2, 0, "Sum Mode."]
 		]
 	},
 	{
@@ -1031,7 +1033,11 @@
 		"extra": false,
 		"parameters": [
 			[0, 1, 0, "Mode."],
-			[0, 31, 0, "Offset."]
+			[0, 31, 0, "Offset."],
+			[0, 64, 0, "Noise X."],
+			[0, 64, 0, "Noise Y."],
+			[0, 32, 0, "Slew A."],
+			[0, 32, 0, "Slew B."]
 		]
 	},
 	{
@@ -1699,10 +1705,14 @@
 		],
 		"extra": false,
 		"parameters": [
-			[0, 31, 8, "LFO depth."],
-			[-31, 31, 0, "Y offset."],
-			[-31, 31, 0, "Feedback."],
-			[-1, 31, -1, "Lowpass filter."]
+			[0, 99, 8, "LFO depth."],
+			[-64, 32, 0, "Y offset."],
+			[-63, 63, 0, "Feedback."],
+			[-1, 31, -1, "Lowpass filter."],
+			[1, 64, 16, "Delay time."],
+			[-32, 32, 0, "Fine delay time."],
+			[1, 6, 6, "Stages."],
+			[0, 1, 0, "Saturation."]
 		]
 	},
 	{
@@ -1719,10 +1729,14 @@
 		],
 		"extra": false,
 		"parameters": [
-			[0, 31, 8, "LFO depth."],
-			[-31, 31, 0, "Y offset."],
-			[-31, 31, 0, "Feedback."],
-			[-1, 31, -1, "Lowpass filter."]
+			[0, 99, 8, "LFO depth."],
+			[-64, 32, 0, "Y offset."],
+			[-63, 63, 0, "Feedback."],
+			[-1, 31, -1, "Lowpass filter."],
+			[1, 64, 16, "Delay time."],
+			[-32, 32, 0, "Fine delay time."],
+			[1, 6, 6, "Stages."],
+			[0, 1, 0, "Saturation."]
 		]
 	},
 	{
@@ -1837,6 +1851,44 @@
 		"extra": false,
 		"parameters": [
 			[0, 3, 0, "Mode."]
+		]
+	},
+	{
+		"algorithm": "M-5",
+		"name": "Stereo Filter",
+		"category": "Filters",
+		"video": "XgryXAiND0U",
+		"io": [
+			"X is left input",
+			"Y is right input",
+			"A is left output",
+			"B is right output",
+			"Z is filter frequency"
+		],
+		"extra": "Knob recorder enabled (use S knob to access parameters)",
+		"parameters": [
+			[0, 2, 0, "Mode (low-, band-, high-pass)."],
+			[0, 31, 0, "Resonance (Q)."]
+		]
+	},
+	{
+		"algorithm": "M-6",
+		"name": "Stereo Tape Delay",
+		"category": "Delay",
+		"video": "XMee99v7EYs",
+		"io": [
+			"X is left input",
+			"Y is right input",
+			"A is left output",
+			"B is right output",
+			"Z is tape speed"
+		],
+		"extra": false,
+		"parameters": [
+			[0, 26, 26, "Tape length."],
+			[-9, 9, 0, "Fine length control."],
+			[0, 36, 24, "Feedback."],
+			[0, 1, 0, "Output mode."]
 		]
 	},
 	{

@@ -296,6 +296,32 @@
 			"columnAlignment": ["center", "center", "center"]
 		}
 	],
+	"C-1": [
+		{
+			"chartLabel": "Sum mode (parameter 1)",
+			"horizontalHeader": [
+				"Param Val",
+				"Output A",
+				"Output B",
+				"Notes"
+			],
+			"chartValues": [
+				0,
+				"Sum of inputs X & Y, plus the offset.",
+				"Difference between inputs X & Y, minus the offset.",
+				"With nothing plugged into input X, B is therefore simply an inverted copy of Y.",
+				1,
+				"X plus the offset.",
+				"Y minus the offset.",
+				"This is particularly useful for shifting between bipolar (e.g. ±5V) and unipolar (e.g. 0-10V) CVs and back again.",
+				2,
+				"X plus the offset.",
+				"Y plus the offset.",
+				" "
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		}
+	],
 	"C-6": [
 		{
 			"chartLabel": "Filter bank (parameter 0)",
@@ -956,6 +982,22 @@
 				"NOR",
 				5,
 				"XNOR"
+			],
+			"columnAlignment": ["center", "center"]
+		}
+	],
+	"M-6": [
+		{
+			"chartLabel": "Output mode (Parameter 3)",
+			"horizontalHeader": [
+				"Parameter value",
+				"Output mode"
+			],
+			"chartValues": [
+				0,
+				"A & B are mix.",
+				1,
+				"A & B are delay only."
 			],
 			"columnAlignment": ["center", "center"]
 		}
