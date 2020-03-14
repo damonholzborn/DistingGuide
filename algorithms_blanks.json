@@ -1,0 +1,64 @@
+	{
+		"algorithm": "fsadfsda",
+		"name": "Precision Adder",
+		"category": "Oscillators",
+		"category": "Sample Players",
+		"category": "Recorders",
+		"category": "Filters",
+		"category": "Waveshaping",
+		"category": "Modulation Effects",
+		"category": "Delay",
+		"category": "Reverb",
+		"category": "Compression",
+		"category": "LFO",
+		"category": "Randomness & Patterns",
+		"category": "Envelopes & VCA",
+		"category": "Quantizers",
+		"category": "CV Processing",
+		"category": "MIDI & External Control",
+		"category": "Utility",
+		"video": "mCFaTt6vNpk",
+		"io": [
+			"sfdsdfafdsa",
+			"sfdsdfafdsa",
+			"sfdsdfafdsa",
+			"sfdsdfafdsa",
+			"sfdsdfafdsa",
+			"sfdsdfafdsa",
+		],
+		"extra": "Knob recorder enabled (use S knob to access parameters)",
+		"extra": false,
+		"parameters": [
+			[00, 00, 00, "sdaffdssfad"],
+			[00, 00, 00, "sdaffdssfad"],
+			[00, 00, 00, "sdaffdssfad"],
+			[00, 00, 00, "sdaffdssfad"],
+			[00, 00, 00, "sdaffdssfad"],
+			[00, 00, 00, "sdaffdssfad"],
+			[00, 00, 00, "sdaffdssfad"],
+			[00, 00, 00, "sdaffdssfad"],
+			[00, 00, 00, "sdaffdssfad"],
+			[00, 00, 00, "sdaffdssfad"],
+			[00, 00, 00, "sdaffdssfad"],
+			[00, 00, 00, "sdaffdssfad"],
+		]
+	},
+
+
+	"A-1": [
+		{
+			"chartLabel": "Sum mode (parameter 1)",
+			"horizontalHeader": [
+				"safdfdsasdfa",
+				"safdfdsasdfa",
+				"safdfdsasdfa",
+				"safdfdsasdfa",
+				"safdfdsasdfa",
+				"safdfdsasdfa",
+			],
+			"chartValues": [
+
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		}
+	],
