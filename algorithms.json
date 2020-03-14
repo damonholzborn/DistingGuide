@@ -962,8 +962,8 @@
 		],
 		"extra": "Outputs & Receives MIDI",
 		"parameters": [
-			[-2, 12, 6, "Clock divisor for A."],
-			[-2, 12, -2, "Clock divisor for B."],
+			[-2, 14, 6, "Clock divisor for A."],
+			[-2, 14, -2, "Clock divisor for B."],
 			[0, 11, 8, "Clock divisor for MIDI clock output."],
 			[0, 1, 0, "Y mode."]
 		]
@@ -1147,13 +1147,14 @@
 			"A is quantized CV out",
 			"B is quantized CV out"
 		],
-		"extra": false,
+		"extra": "Receives MIDI",
 		"parameters": [
 			["N/A", "N/A", "N/A", "Pattern."],
 			[0, 2, 0, "Scale."],
 			[-12, 12, 0, "Key."],
 			[0, 32, 32, "Input X attenuation."],
-			[-32, 32, -32, "Trigger mode / offset / Y attenuation."]
+			[-32, 32, -32, "Trigger mode / offset / Y attenuation."],
+			[0, 32, 0, "Slew rate."]
 		]
 	},
 	{
@@ -1889,6 +1890,44 @@
 			[-9, 9, 0, "Fine length control."],
 			[0, 36, 24, "Feedback."],
 			[0, 1, 0, "Output mode."]
+		]
+	},
+	{
+		"algorithm": "N-1",
+		"name": "Switch",
+		"category": "Utility",
+		"video": "k8K5AiGCy-g",
+		"io": [
+			" X and Y are inputs",
+			"A and B are outputs",
+			"Z is control CV or trigger"
+		],
+		"extra": "Knob recorder enabled (use S knob to access parameters)",
+		"parameters": [
+			[0, 1, 0, "Mode."],
+			[0, 32, 3, "Hysteresis."],
+			[0, 99, 0, "Fade."]
+		]
+	},
+	{
+		"algorithm": "N-5",
+		"name": "Pulsar VCO",
+		"category": "Oscillators",
+		"video": "Ekz4Eq8fJ9Q",
+		"io": [
+			"X is V/Oct pitch input (fundamental)",
+			"Y is V/Oct pitch input (formant)",
+			"Z is tune or masking",
+			"A & B are pulsar outputs"
+		],
+		"extra": "Receives MIDI",
+		"parameters": [
+			[0, 99, 0, "Chooses the wavetable."],
+			[0, 99, 0, "Chooses the wave."],
+			[0, 3, 0, "Window."],
+			[0, 1, 0, "Y Mode."],
+			[0, 99, 0, "Masking."],
+			[-16, 8, 0, "Octave."]
 		]
 	},
 	{
