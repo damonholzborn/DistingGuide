@@ -27,7 +27,8 @@
 		],
 		"extra": "Knob recorder enabled (use S knob to access parameters)",
 		"parameters": [
-			[0, 1, 0, "When 1, the scale is not restricted to integer steps, and changes smoothly with Z."]
+			[0, 1, 0, "Z Mode (when 1, the scale is not restricted to integer steps, and changes smoothly with Z)."],
+			[-10, 10, 0, "Y Offset"]
 		]
 	},
 	{
@@ -133,7 +134,10 @@
 			[0, 1, 0, "Mode."],
 			[0, 31, 0, "Offset."],
 			[0, 3, 1, "Noise colour."],
-			[0, 64, 0, "Noise X."]
+			[0, 64, 0, "Noise X."],
+			[0, 32, 32, "Atten B."],
+			[-1, 31, -1, "Up slew."],
+			[-1, 31, -1, "Down slew."]
 		]
 	},
 	{
@@ -346,7 +350,7 @@
 			"A is audio output",
 			"B is envelope of audio output"
 		],
-		"extra": "Z press is 'strike'",
+		"extra": "Z press is 'strike' (use S knob to access parameters)",
 		"parameters": [
 			[-31, 31, 0, "Applies an offset to the Y input."]
 		]
@@ -558,7 +562,7 @@
 			"A is envelope output",
 			"B is envelope output"
 		],
-		"extra": "Press Z to trigger",
+		"extra": "Press Z to trigger (use S knob to access parameters)",
 		"parameters": [
 			[0, 2, 0, "Trigger Mode."],
 			[0, 1, 0, "Z Mode."],
@@ -582,14 +586,16 @@
 			"A is envelope output",
 			"B is VCA output"
 		],
-		"extra": "Press Z to trigger",
+		"extra": "Press Z to trigger (use S knob to access parameters)",
 		"parameters": [
 			[0, 2, 0, "Trigger Mode."],
 			[0, 1, 0, "Z Mode."],
-			[-32, 32, 32, "Output A Attenuverter."],
-			[-32, 32, 32, "Output B Attenuverter."],
-			[-32, 32, 0, "Output A Offset."],
-			[-32, 32, 0, "Output B Offset."]
+			[-40, 41, 32, "Output A Attenuverter."],
+			[-40, 40, 32, "Output B Attenuverter."],
+			[-40, 40, 0, "Output A Offset."],
+			[-40, 32, 0, "Output B Offset."],
+			[0, 32, 26, "Attack shape."],
+			[0, 32, 10, "Release shape."]
 		]
 	},
 	{
@@ -691,7 +697,11 @@
 		],
 		"extra": false,
 		"parameters": [
-			[-8, 8, 0, "Octave shift."]
+			[-8, 8, 0, "Octave shift."],
+			[-99, 99, 99, "Coarse."],
+			[-99, 99, 10, "Fine."],
+			[-99, 99, 0, "Offsest."],
+			[0, 99, 49, "Gate level."]
 		]
 	},
 	{
@@ -726,8 +736,8 @@
 		"extra": "Tap tempo enabled",
 		"parameters": [
 			[-15, 8, 0, "Delay time multiplier."],
-			[-32, 32, 32, "Output A Attenuverter."],
-			[-32, 32, 32, "Output B Attenuverter."],
+			[-40, 41, 32, "Output A Attenuverter."],
+			[-40, 20, 32, "Output B Attenuverter."],
 			[0, 32, 26, "Attack shape."],
 			[0, 32, 10, "Decay shape."]
 		]
@@ -747,8 +757,8 @@
 		"extra": "Tap tempo enabled",
 		"parameters": [
 			[-15, 8, 0, "Delay time multiplier."],
-			[-32, 32, 32, "Output A Attenuverter."],
-			[-32, 32, 32, "Output B Attenuverter."],
+			[-40, 41, 32, "Output A Attenuverter."],
+			[-40, 41, 32, "Output B Attenuverter."],
 			[0, 32, 26, "Attack shape."],
 			[0, 32, 10, "Decay shape."]
 		]
@@ -768,8 +778,8 @@
 		"extra": "Tap tempo enabled",
 		"parameters": [
 			[-15, 8, 0, "Delay time multiplier."],
-			[-32, 32, 32, "Output A Attenuverter."],
-			[-32, 32, 32, "Output B Attenuverter."],
+			[-40, 41, 32, "Output A Attenuverter."],
+			[-40, 40, 32, "Output B Attenuverter."],
 			[0, 32, 26, "Attack shape."],
 			[0, 32, 10, "Decay shape."]
 		]
@@ -789,8 +799,8 @@
 		"extra": "Tap tempo enabled",
 		"parameters": [
 			[-15, 8, 0, "Delay time multiplier."],
-			[-32, 32, 32, "Output A Attenuverter."],
-			[-32, 32, 32, "Output B Attenuverter."],
+			[-40, 41, 32, "Output A Attenuverter."],
+			[-40, 40, 32, "Output B Attenuverter."],
 			[0, 32, 26, "Attack shape."],
 			[0, 32, 10, "Decay shape."]
 		]
@@ -810,7 +820,7 @@
 		"extra": false,
 		"parameters": [
 			[0, 1, 0, "Direction."],
-			[1, 16, 8, "Length."],
+			[1, 32, 8, "Length."],
 			[0, 31, 0, "Slew rate."],
 			[-32, 32, 32, "Output attenuverter."],
 			[-32, 32, 0, "Offset."]
@@ -831,11 +841,12 @@
 		"extra": "Outputs MIDI",
 		"parameters": [
 			[0, 1, 0, "Direction."],
-			[1, 16, 8, "Length."],
+			[1, 32, 8, "Length."],
 			[0, 15, 0, "Scale."],
 			[-32, 32, 32, "Output attenuverter."],
 			[0, 1, 0, "MIDI Gate."],
-			[-48, 48, 0, "Transpose."]
+			[-48, 48, 0, "Transpose."],
+			[0, 31, 0, "Slew."]
 		]
 	},
 	{
@@ -850,9 +861,11 @@
 			"A is trigger output",
 			"B is inverse trigger output"
 		],
-		"extra": "Press Z to modify sequence",
+		"extra": "Press Z to modify sequence (use S knob to access parameters)",
 		"parameters": [
-			[1, 16, 8, "Length."]
+			[1, 32, 8, "Length."],
+			[0, 31, 0, "Pulse A."],
+			[0, 31, 0, "Pulse B."]
 		]
 	},
 	{
@@ -869,8 +882,10 @@
 		],
 		"extra": false,
 		"parameters": [
-			[1, 16, 8, "Length A."],
-			[1, 16, 8, "Length B."]
+			[1, 32, 8, "Length A."],
+			[1, 32, 8, "Length B."],
+			[0, 31, 0, "Pulse A."],
+			[0, 31, 0, "Pulse B."]
 		]
 	},
 	{
@@ -951,7 +966,7 @@
 	},
 	{
 		"algorithm": "G-6",
-		"name": "MIDI Clock",
+		"name": "Clock",
 		"category": "MIDI & External Control",
 		"video": "af6eHIYT2Ww",
 		"io": [
@@ -960,12 +975,15 @@
 			"A & B are clock outputs",
 			"Z is not used"
 		],
-		"extra": "Outputs & Receives MIDI",
+		"extra": "Outputs & Receives MIDI, Z press is start/stop or tap (use S knob to access parameters)",
 		"parameters": [
+			[0, 5, 0, "Mode."],
 			[-2, 14, 6, "Clock divisor for A."],
 			[-2, 14, -2, "Clock divisor for B."],
-			[0, 11, 8, "Clock divisor for MIDI clock output."],
-			[0, 1, 0, "Y mode."]
+			[0, 11, 8, "Clock divisor for X."],
+			[0, 3, 0, "Y mode."],
+			[-120, -120, 0, "Tempo"],
+			[0, 1, 0, "Z mode."]
 		]
 	},
 	{
@@ -983,7 +1001,7 @@
 		"parameters": [
 			[-31, 31, 0, "Transpose."],
 			[0, 24, 2, "Pitch bend depth."],
-			[-1, 31, -1, "Scale."],
+			[-1, 99, -1, "Scale."],
 			[0, 32, 0, "Portamento."]
 		]
 	},
@@ -995,13 +1013,15 @@
 		"io": [
 			"X is pitch CV input",
 			"Y is gate input",
-			"A & B are not used",
+			"A & B pass through X & Y",
 			"Z is mod wheel or velocity CV input"
 		],
 		"extra": "Outputs MIDI",
 		"parameters": [
 			[0, 99, 16, "Channel offset."],
-			[0, 1, 0, "Z mode."]
+			[0, 99, 0, "Z mode."],
+			[0, 99, 0, "X CC."],
+			[0, 99, 0, "Y CC."]
 		]
 	},
 	{
@@ -1052,8 +1072,8 @@
 		],
 		"extra": "Outputs MIDI",
 		"parameters": [
-			[-1, 31, 31, "Input X attenuation."],
-			[-1, 31, 31, "Input Y attenuation."],
+			[0, 32, 32, "Input X attenuation."],
+			[0, 32, 32, "Input Y attenuation."],
 			[-31, 31, 0, "X transpose."],
 			[-31, 31, 0, "Y transpose."]
 		]
@@ -1068,12 +1088,12 @@
 			"B = quantized( Y )",
 			"Z is trigger"
 		],
-		"extra": "Outputs MIDI",
+		"extra": "Outputs & Receives MIDI",
 		"parameters": [
-			[-1, 31, 31, "Input X attenuation."],
-			[-1, 31, 31, "Input Y attenuation."],
-			[-16, 16, 0, "X scale/trigger mode."],
-			[-16, 16, 0, "Y scale/trigger mode."],
+			[0, 32, 32, "Input X attenuation."],
+			[0, 32, 32, "Input Y attenuation."],
+			[-18, 18, 0, "X scale/trigger mode."],
+			[-18, 18, 0, "Y scale/trigger mode."],
 			[0, 1, 0, "MIDI Gate."]
 		]
 	},
@@ -1551,7 +1571,7 @@
 		],
 		"extra": "Outputs MIDI",
 		"parameters": [
-			[0, 31, 0, "Scale."],
+			[0, 99, 0, "Scale."],
 			[-1, 31, 31, "Input X attenuation."],
 			[-2, 31, 31, "Input Y attenuation."],
 			[-31, 31, 0, "Transpose."],
@@ -1621,7 +1641,7 @@
 			"B is right output",
 			"Z is wet/dry or freeze"
 		],
-		"extra": "Z press is freeze",
+		"extra": "Z press is freeze (use S knob to access parameters)",
 		"parameters": [
 			[1, 32, 16, "Size."],
 			[1, 32, 24, "Feedback."],
@@ -1643,7 +1663,7 @@
 			"B is right output",
 			"Z is wet/dry or freeze"
 		],
-		"extra": "Z press is freeze",
+		"extra": "Z press is freeze (use S knob to access parameters)",
 		"parameters": [
 			[1, 32, 16, "Size."],
 			[1, 32, 24, "Feedback."],
@@ -1664,7 +1684,7 @@
 			"B is Y plus reverb",
 			"Z is wet/dry or freeze"
 		],
-		"extra": "Z press is freeze",
+		"extra": "Z press is freeze (use S knob to access parameters)",
 		"parameters": [
 			[1, 32, 16, "Size."],
 			[1, 32, 24, "Feedback."],
@@ -1893,6 +1913,50 @@
 		]
 	},
 	{
+		"algorithm": "M-7",
+		"name": "Granular Pitch Shifter",
+		"category": "Delay",
+		"video": "pUqJBDtFfL8",
+		"io": [
+			"X is audio input",
+			"Y is pitch 1V/octave",
+			"A is mix output",
+			"B is pitch shifted output",
+			"Z is mix or freeze"
+		],
+		"extra": "Z press is freeze (use S knob to access parameters)",
+		"parameters": [
+			[0, 99, 50, "Grain length."],
+			[0, 3, 0, "Window type."],
+			[0, 32, 16, "Delay."],
+			[0, 64, 0, "Feedback."],
+			[-48, 48, 0, "Y Offset (semitones)."],
+			[-99, 99, 0, "Fine (cents)."],
+			[-65, 64, -65, "Mix."]
+		]
+	},
+	{
+		"algorithm": "M-8",
+		"name": "Chaos",
+		"category": "Randomness & Patterns",
+		"video": "I5NVIgw_0A4",
+		"io": [
+			"X & Y influence the chaos",
+			"A & B are chaotic outputs",
+			"Z is speed"
+		],
+		"extra": false,
+		"parameters": [
+			[-64, 32, 0, "Range."],
+			[0, 11, 0, "Outputs."],
+			[-64, 64, 32, "Atten A."],
+			[-64, 64, 32, "Atten B."],
+			[-32, 32, 0, "Offset A."],
+			[-32, 32, 0, "Offset B."],
+			[0, 1, 0, "Clamp."]
+		]
+	},
+	{
 		"algorithm": "N-1",
 		"name": "Switch",
 		"category": "Utility",
@@ -1906,7 +1970,28 @@
 		"parameters": [
 			[0, 1, 0, "Mode."],
 			[0, 32, 3, "Hysteresis."],
-			[0, 99, 0, "Fade."]
+			[0, 99, 0, "Fade."],
+			[-1, 99, 99, "Chance."]
+		]
+	},
+	{
+		"algorithm": "N-2",
+		"name": "Rotary",
+		"category": "Modulation Effects",
+		"video": "fT-1Bceazbs",
+		"io": [
+			"X is audio input",
+			"Y is mix",
+			"A and B are stereo outputs",
+			"Z is speed"
+		],
+		"extra": false,
+		"parameters": [
+			[0, 32, 32, "Mix."],
+			[0, 63, 24, "Depth."],
+			[0, 99, 10, "Slew."],
+			[0, 32, 15, "Crossover"],
+			[0, 64, 15, "Bass modulation."]
 		]
 	},
 	{

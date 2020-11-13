@@ -420,9 +420,146 @@
 			"columnAlignment": ["center", "left"]
 		}
 	],
+	"E-1": [
+		{
+			"chartLabel": "Output A end-of-cycle mode (parameter 2)",
+			"horizontalHeader": [
+				"Param Val",
+				"Description"
+			],
+			"chartValues": [
+				"41",
+				"If parameter 2 is set to the special value 41, output A becomes an end-of-cycle trigger output, generating a 10ms 5V pulse at the end of the envelope's release stage."
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		}
+	],
+	"E-2": [
+		{
+			"chartLabel": "Output A end-of-cycle mode (parameter 2)",
+			"horizontalHeader": [
+				"Param Val",
+				"Description"
+			],
+			"chartValues": [
+				"41",
+				"If parameter 2 is set to the special value 41, output A becomes an end-of-cycle trigger output, generating a 10ms 5V pulse at the end of the envelope's release stage."
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		}
+	],
+	"F-1": [
+		{
+			"chartLabel": "Output A end-of-cycle mode (parameter 1)",
+			"horizontalHeader": [
+				"Param Val",
+				"Description"
+			],
+			"chartValues": [
+				"41",
+				"If parameter 1 is set to the special value 41, output A becomes an end-of-cycle trigger output, generating a 10ms 5V pulse at the end of the envelope's release stage."
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		}
+	],
+	"F-2": [
+		{
+			"chartLabel": "Output A end-of-cycle mode (parameter 1)",
+			"horizontalHeader": [
+				"Param Val",
+				"Description"
+			],
+			"chartValues": [
+				"41",
+				"If parameter 1 is set to the special value 41, output A becomes an end-of-cycle trigger output, generating a 10ms 5V pulse at the end of the envelope's release stage."
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		}
+	],
+	"F-3": [
+		{
+			"chartLabel": "Output A end-of-cycle mode (parameter 1)",
+			"horizontalHeader": [
+				"Param Val",
+				"Description"
+			],
+			"chartValues": [
+				"41",
+				"If parameter 1 is set to the special value 41, output A becomes an end-of-cycle trigger output, generating a 10ms 5V pulse at the end of the envelope's release stage."
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		}
+	],
+	"F-4": [
+		{
+			"chartLabel": "Output A end-of-cycle mode (parameter 1)",
+			"horizontalHeader": [
+				"Param Val",
+				"Description"
+			],
+			"chartValues": [
+				"41",
+				"If parameter 1 is set to the special value 41, output A becomes an end-of-cycle trigger output, generating a 10ms 5V pulse at the end of the envelope's release stage."
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		}
+	],
 	"G-6": [
 		{
-			"chartLabel": "Incoming clock divisor A, B (parameters 0, 1)",
+			"chartLabel": "Mode of operation (parameter 0)",
+			"horizontalHeader": [
+				"Param Val",
+				"A/B driven by",
+				"MIDI driven by",
+				"Typical Application"
+			],
+			"chartValues": [
+				"0",
+				"MIDI",
+				"X",
+				"Legacy disting behaviour.",
+				"1",
+				"X",
+				"X",
+				"Another module is the clock leader; disting converts to MIDI clock and generates clock divisions.",
+				"2",
+				"Internal",
+				"X",
+				"",
+				"3",
+				"MIDI",
+				"Internal",
+				"Disting converts MIDI clock to analogue clock.",
+				"4",
+				"X",
+				"Internal",
+				"",
+				"5",
+				"Internal",
+				"Internal",
+				"Disting is the clock leader, generating analogue clock and MIDI clock."
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		},
+		{
+			"chartLabel": "Z mode (parameter 6)",
+			"horizontalHeader": [
+				"Parm Val",
+				"Mode",
+				"Description"
+			],
+			"chartValues": [
+				"0",
+				"Start/Stop",
+				"Push Z to start the internal clock; push it again to stop the clock. Parameter 5 sets the tempo, as 120 plus the parameter value (i.e. the range is 0-240 bpm).",
+				"1",
+				"Tap Tempo",
+				"Push Z five times to start the clock (i.e. a one bar count-in in 4 time). Hold Z for 2 seconds to stop the clock. While the clock is running, you may continue to tap Z to correct or change the tempo."
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		},
+		{
+			"chartLabel": "Incoming clock divisor for outputs A, B (parameters 1, 2)",
 			"horizontalHeader": [
 				"Param Val",
 				"Output A/B"
@@ -466,7 +603,7 @@
 			"columnAlignment": ["center", "center"]
 		},
 		{
-			"chartLabel": "Outgoing clock divisor (parameter 2)",
+			"chartLabel": "Outgoing clock divisor (parameter 3)",
 			"horizontalHeader": [
 				"Param Val",
 				"Input X"
@@ -498,6 +635,29 @@
 				"1/1"
 			],
 			"columnAlignment": ["center", "center"]
+		},
+		{
+			"chartLabel": "Y mode (parameter 4)",
+			"horizontalHeader": [
+				"Value",
+				"Y mode",
+				"Description"
+			],
+			"chartValues": [
+				"0",
+				"Not used.",
+				"The X clock is taken to start as soon as pulses appear on the X input, and is assumed to have stopped if no pulses appear for two seconds.",
+				"1",
+				"Run/stop for X.",
+				"The X clock is ignored until Y goes high (over 1V) and stops when Y goes low.",
+				"2",
+				"Run/stop for internal.",
+				"The internal clock starts when Y goes high and stops when Y goes low.",
+				"3",
+				"Run/stop for both.",
+				"Both the X clock and the internal clock are controlled by Y as above."
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
 		}
 	],
 	"H-1": [
@@ -681,7 +841,11 @@
 				"±15",
 				"natural minor",
 				"±16",
-				"harmonic minor"
+				"harmonic minor",
+				"±17",
+				"MIDI 1",
+				"±18",
+				"MIDI 2"
 			],
 			"columnAlignment": ["center", "center", "center"]
 		}
@@ -1004,6 +1168,55 @@
 				"A & B are delay only."
 			],
 			"columnAlignment": ["center", "center"]
+		}
+	],
+	"M-8": [
+		{
+			"chartLabel": "A & B outputs (parameter 1)",
+			"horizontalHeader": [
+				"Param Val",
+				"Output A",
+				"Output B"
+			],
+			"chartValues": [
+				"0",
+				"x",
+				"z",
+				"1",
+				"y",
+				"z",
+				"2",
+				"x",
+				"y",
+				"3",
+				"x-based gate",
+				"z",
+				"4",
+				"y-based gate",
+				"z",
+				"5",
+				"x-based gate",
+				"y",
+				"6",
+				"x",
+				"z-based gate",
+				"7",
+				"y",
+				"z-based gate",
+				"8",
+				"x",
+				"y-based gate",
+				"9",
+				"x-based gate",
+				"z-based gate",
+				"10",
+				"y-based gate",
+				"z-based gate",
+				"11",
+				"x-based gate",
+				"y-based gate"
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
 		}
 	]
 }
