@@ -201,10 +201,11 @@
 		],
 		"extra": false,
 		"parameters": [
-			[-1, 31, 31, "Sets an attenuation for output A."],
-			[-1, 31, 31, "Sets an attenuation for output B."],
-			[-31, 31, 0, "Sets an offset for output A."],
-			[-31, 31, 0, "Sets an offset for output B."]
+			[0, 40, 32, "Sets an attenuation for output A."],
+			[0, 40, 32, "Sets an attenuation for output B."],
+			[-40, 40, 0, "Sets an offset for output A."],
+			[-40, 40, 0, "Sets an offset for output B."],
+			[-32, 32, 0, "Y offset."]
 		]
 	},
 	{
@@ -352,7 +353,8 @@
 		],
 		"extra": "Z press is 'strike' (use S knob to access parameters)",
 		"parameters": [
-			[-31, 31, 0, "Applies an offset to the Y input."]
+			[-31, 31, 0, "Applies an offset to the Y input."],
+			[0, 1, 0, "Mode."]
 		]
 	},
 	{
@@ -562,16 +564,16 @@
 			"A is envelope output",
 			"B is envelope output"
 		],
-		"extra": "Press Z to trigger (use S knob to access parameters)",
+		"extra": "Press Z to trigger (use S knob to access parameters), Receives MIDI",
 		"parameters": [
 			[0, 2, 0, "Trigger Mode."],
 			[0, 1, 0, "Z Mode."],
-			[-32, 32, 32, "Output A Attenuverter."],
-			[-32, 32, 32, "Output B Attenuverter."],
-			[-32, 32, 0, "Output A Offset."],
-			[-32, 32, 0, "Output B Offset."],
-			[0, 32, 26, "Attack shape."],
-			[0, 32, 10, "Release shape."]
+			[-40, 41, 32, "Output A Attenuverter."],
+			[-40, 40, 32, "Output B Attenuverter."],
+			[-40, 40, 0, "Output A Offset."],
+			[-40, 40, 0, "Output B Offset."],
+			[0, 32, 26, "Attack shape (exponential to linear)."],
+			[0, 32, 10, "Release shape (exponential to linear)."]
 		]
 	},
 	{
@@ -586,16 +588,16 @@
 			"A is envelope output",
 			"B is VCA output"
 		],
-		"extra": "Press Z to trigger (use S knob to access parameters)",
+		"extra": "Press Z to trigger (use S knob to access parameters), Receives MIDI",
 		"parameters": [
-			[0, 2, 0, "Trigger Mode."],
+			[0, 8, 0, "Trigger Mode."],
 			[0, 1, 0, "Z Mode."],
 			[-40, 41, 32, "Output A Attenuverter."],
 			[-40, 40, 32, "Output B Attenuverter."],
 			[-40, 40, 0, "Output A Offset."],
-			[-40, 32, 0, "Output B Offset."],
-			[0, 32, 26, "Attack shape."],
-			[0, 32, 10, "Release shape."]
+			[-40, 40, 0, "Output B Offset."],
+			[0, 32, 26, "Attack shape (exponential to linear)."],
+			[0, 32, 10, "Release shape (exponential to linear)."]
 		]
 	},
 	{
@@ -609,14 +611,16 @@
 			"Z sets the envelope times A is envelope output A",
 			"B is envelope output B"
 		],
-		"extra": false,
+		"extra": "Press Z to trigger (use S knob to access parameters), Receives MIDI",
 		"parameters": [
 			[0, 2, 0, "Trigger Mode."],
 			[0, 1, 0, "Z Mode."],
-			[-32, 32, 32, "Output A Attenuverter."],
-			[-32, 32, 32, "Output B Attenuverter."],
-			[-32, 32, 0, "Output A Offset."],
-			[-32, 32, 0, "Output B Offset."]
+			[-40, 41, 32, "Output A Attenuverter."],
+			[-40, 40, 32, "Output B Attenuverter."],
+			[-40, 40, 0, "Output A Offset."],
+			[-40, 40, 0, "Output B Offset."],
+			[0, 32, 26, "Attack shape (exponential to linear)."],
+			[0, 32, 10, "Release shape (exponential to linear)."]
 		]
 	},
 	{
@@ -680,7 +684,8 @@
 			[0, 99, 20, "Attack time."],
 			[0, 99, 20, "Release time."],
 			[-1, 36, 0, "Make-up gain."],
-			[0, 99, 0, "Lookahead."]
+			[0, 99, 0, "Lookahead."],
+			[-80, 12, -80, "Side-chain mix."]
 		]
 	},
 	{
@@ -822,8 +827,8 @@
 			[0, 1, 0, "Direction."],
 			[1, 32, 8, "Length."],
 			[0, 31, 0, "Slew rate."],
-			[-32, 32, 32, "Output attenuverter."],
-			[-32, 32, 0, "Offset."]
+			[-40, 40, 40, "Output attenuverter."],
+			[-40, 40, 0, "Offset."]
 		]
 	},
 	{
@@ -843,7 +848,7 @@
 			[0, 1, 0, "Direction."],
 			[1, 32, 8, "Length."],
 			[0, 15, 0, "Scale."],
-			[-32, 32, 32, "Output attenuverter."],
+			[-40, 40, 32, "Output attenuverter."],
 			[0, 1, 0, "MIDI Gate."],
 			[-48, 48, 0, "Transpose."],
 			[0, 31, 0, "Slew."]
@@ -975,7 +980,7 @@
 			"A & B are clock outputs",
 			"Z is not used"
 		],
-		"extra": "Outputs & Receives MIDI, Z press is start/stop or tap (use S knob to access parameters)",
+		"extra": "Z press is start/stop or tap (use S knob to access parameters), Outputs & Receives MIDI",
 		"parameters": [
 			[0, 5, 0, "Mode."],
 			[-2, 14, 6, "Clock divisor for A."],
@@ -1002,7 +1007,10 @@
 			[-31, 31, 0, "Transpose."],
 			[0, 24, 2, "Pitch bend depth."],
 			[-1, 99, -1, "Scale."],
-			[0, 32, 0, "Portamento."]
+			[0, 32, 0, "Portamento."],
+			[0, 100, 0, "Interrupt."],
+			[0, 2, 0, "Priority."]
+
 		]
 	},
 	{
@@ -1019,7 +1027,7 @@
 		"extra": "Outputs MIDI",
 		"parameters": [
 			[0, 99, 16, "Channel offset."],
-			[0, 99, 0, "Z mode."],
+			[0, 127, 0, "Z mode."],
 			[0, 99, 0, "X CC."],
 			[0, 99, 0, "Y CC."]
 		]
@@ -1498,7 +1506,7 @@
 			[-16, 8, 0, "Octave shift."],
 			[-32, 32, 0, "Y offset."],
 			[-3, 99, 0, "Output B option/detune."],
-			[-1, 99, 0, "Output B phase"]
+			[-1, 127, 0, "Output B phase"]
 		]
 	},
 	{
@@ -1517,7 +1525,8 @@
 			[0, 99, 0, "Chooses the wavetable."],
 			[-32, 32, 0, "Y Offset."],
 			[-32, 32, 32, "Output A attenuverter."],
-			[-32, 32, -32, "Output B attenuverter."]
+			[-32, 32, -32, "Output B attenuverter."],
+			[-15, 8, 0, "LFO time multiplier."]
 		]
 	},
 	{
@@ -1572,8 +1581,8 @@
 		"extra": "Outputs MIDI",
 		"parameters": [
 			[0, 99, 0, "Scale."],
-			[-1, 31, 31, "Input X attenuation."],
-			[-2, 31, 31, "Input Y attenuation."],
+			[0, 32, 32, "Input X attenuation."],
+			[-1, 32, 31, "Input Y attenuation."],
 			[-31, 31, 0, "Transpose."],
 			[0, 31, 0, "Offset."]
 		]

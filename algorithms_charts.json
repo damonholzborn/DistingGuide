@@ -247,7 +247,9 @@
 				3,
 				"Saw.",
 				4,
-				"Sub-octave square."
+				"Sub-octave square.",
+				5,
+				"MIDI gate."
 			],
 			"columnAlignment": ["center", "center"]
 		}
@@ -269,7 +271,14 @@
 				"Sub-octave square",
 				2,
 				"Square/<wbr>pulse",
-				"Sub-octave square"
+				"Sub-octave square",
+				3,
+				"Tri/<wbr>saw",
+				"MIDI gate",
+				4,
+				"Square/<wbr>pulse",
+				"MIDI gate"
+
 			],
 			"columnAlignment": ["center", "center", "center"]
 		},
@@ -422,6 +431,22 @@
 	],
 	"E-1": [
 		{
+			"chartLabel": "Trigger Mode (parameter 0)",
+			"horizontalHeader": [
+				"Param Val",
+				"Trigger Mode"
+			],
+			"chartValues": [
+				0,
+				"Envelope will rise to full level and stay there as long as the input is high (AR mode).",
+				1,
+				"Envelope will execute one full attack/decay cycle in response to a trigger input (AD mode).",
+				2,
+				"Envelope will continually execute attack/decay cycles as long as the trigger is high (looped AD mode)."
+			],
+			"columnAlignment": ["center", "left"]
+		},
+		{
 			"chartLabel": "Output A end-of-cycle mode (parameter 2)",
 			"horizontalHeader": [
 				"Param Val",
@@ -435,6 +460,56 @@
 		}
 	],
 	"E-2": [
+		{
+			"chartLabel": "Trigger Mode (parameter 0)",
+			"horizontalHeader": [
+				"Param Val",
+				"Trigger Mode"
+			],
+			"chartValues": [
+				0,
+				"Envelope will rise to full level and stay there as long as the input is high (AR mode).",
+				1,
+				"Envelope will execute one full attack/decay cycle in response to a trigger input (AD mode).",
+				2,
+				"Envelope will continually execute attack/decay cycles as long as the trigger is high (looped AD mode).",
+				"3-5",
+				"Tracked envelope for input X.",
+				"6-8",
+				"Tracked envelope for input Y."
+			],
+			"columnAlignment": ["center", "left"]
+		},
+		{
+			"chartLabel": "Output A end-of-cycle mode (parameter 2)",
+			"horizontalHeader": [
+				"Param Val",
+				"Description"
+			],
+			"chartValues": [
+				"41",
+				"If parameter 2 is set to the special value 41, output A becomes an end-of-cycle trigger output, generating a 10ms 5V pulse at the end of the envelope's release stage."
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		}
+	],
+	"E-3": [
+		{
+			"chartLabel": "Trigger Mode (parameter 0)",
+			"horizontalHeader": [
+				"Param Val",
+				"Trigger Mode"
+			],
+			"chartValues": [
+				0,
+				"Envelope will rise to full level and stay there as long as the input is high (AR mode).",
+				1,
+				"Envelope will execute one full attack/decay cycle in response to a trigger input (AD mode).",
+				2,
+				"Envelope will continually execute attack/decay cycles as long as the trigger is high (looped AD mode)."
+			],
+			"columnAlignment": ["center", "left"]
+		},
 		{
 			"chartLabel": "Output A end-of-cycle mode (parameter 2)",
 			"horizontalHeader": [
@@ -1005,6 +1080,8 @@
 				"Output B"
 			],
 			"chartValues": [
+				"-4",
+				"MIDI gate",
 				"-3",
 				"A ±8V square wave one octave below output A",
 				"-2",
@@ -1012,7 +1089,7 @@
 				"-1",
 				"Wavetable VCO one octave above output A",
 				"0-99",
-				"Wavetable VCO detuned relative to output A; output A is also detuned in the opposite direction."
+				"Wavetable VCO detuned relative to output A; output A is also detuned in the opposite direction"
 			],
 			"columnAlignment": ["center", "left"]
 		}

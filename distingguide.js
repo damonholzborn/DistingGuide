@@ -149,7 +149,6 @@ function displayListByNumber() {
 	for (var i = 0; i < algorithmList.length; i++) {
 		var algorithm = algorithmList[i];
 		displayAlgorithm(algorithm);
-		console.log(algorithm.algorithm, algorithm.name);
 	}
 }
 
