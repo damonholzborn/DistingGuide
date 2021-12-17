@@ -86,11 +86,12 @@
 		],
 		"extra": "Outputs & Receives MIDI",
 		"parameters": [
-			[-1, 31, 31, "Input X attenuation."],
+			[0, 32, 32, "Input X attenuation."],
 			[0, 1, 0, "Transpose mode."],
 			[-31, 31, 0, "Key."],
 			[0, 31, 0, "Offset."],
-			[0, 1, 0, "MIDI Gate."]
+			[0, 1, 0, "MIDI Gate."],
+			[-48, 48, 0, "Transpose."]
 		]
 	},
 	{
@@ -104,7 +105,10 @@
 			"Z is hysteresis"
 		],
 		"extra": false,
-		"parameters": []
+		"parameters": [
+			[-40, 40, 0, "X Offset."],
+			[-40, 40, 0, "Y Offset."]
+		]
 	},
 	{
 		"algorithm": "A-8",
@@ -117,7 +121,10 @@
 			"Z is gain"
 		],
 		"extra": "Knob recorder enabled (use S knob to access parameters)",
-		"parameters": []
+		"parameters": [
+			[0, 1, 0, "Type A."],
+			[0, 1, 1, "Type B."]
+		]
 	},
 	{
 		"algorithm": "B-1",
@@ -146,14 +153,17 @@
 		"category": "CV Processing",
 		"video": "irKcEJCB0FQ",
 		"io": [
-			"A = linear slew rate limited ( X + Y )",
-			"B = log slew rate limited ( X + Y )",
+			"A = linear slew rate limited ( X + Y ) or X",
+			"B = log slew rate limited ( X + Y ) or Y",
 			"Z is slew rate"
 		],
 		"extra": false,
 		"parameters": [
 			[-1, 32, -1, "Up slew."],
-			[-1, 32, -1, "Down slew."]
+			[-1, 32, -1, "Down slew."],
+			[0, 1, 0, "Type A."],
+			[0, 1, 1, "Type B."],
+			[0, 1, 0, "Mode."]
 		]
 	},
 	{
@@ -822,13 +832,14 @@
 			"A is unipolar output",
 			"B is bipolar output"
 		],
-		"extra": false,
+      "extra": "Receives MIDI",
 		"parameters": [
 			[0, 1, 0, "Direction."],
 			[1, 32, 8, "Length."],
 			[0, 31, 0, "Slew rate."],
 			[-40, 40, 40, "Output attenuverter."],
-			[-40, 40, 0, "Offset."]
+			[-40, 40, 0, "Offset."],
+			[0, 15, 0, "MIDI clock divisor."]
 		]
 	},
 	{
@@ -843,7 +854,7 @@
 			"A is quantized CV output",
 			"B is trigger output"
 		],
-		"extra": "Outputs MIDI",
+		"extra": "Outputs & Receives MIDI",
 		"parameters": [
 			[0, 1, 0, "Direction."],
 			[1, 32, 8, "Length."],
@@ -851,7 +862,8 @@
 			[-40, 40, 32, "Output attenuverter."],
 			[0, 1, 0, "MIDI Gate."],
 			[-48, 48, 0, "Transpose."],
-			[0, 31, 0, "Slew."]
+			[0, 31, 0, "Slew."],
+			[0, 15, 0, "MIDI clock divisor."]
 		]
 	},
 	{
@@ -866,11 +878,12 @@
 			"A is trigger output",
 			"B is inverse trigger output"
 		],
-		"extra": "Press Z to modify sequence (use S knob to access parameters)",
+		"extra": "Press Z to modify sequence (use S knob to access parameters), Receives MIDI",
 		"parameters": [
 			[1, 32, 8, "Length."],
 			[0, 31, 0, "Pulse A."],
-			[0, 31, 0, "Pulse B."]
+			[0, 31, 0, "Pulse B."],
+			[0, 15, 0, "MIDI clock divisor."]
 		]
 	},
 	{
@@ -885,12 +898,13 @@
 			"A is trigger output A",
 			"B is trigger output B"
 		],
-		"extra": false,
+      "extra": "Press Z to modify sequence (use S knob to access parameters), Receives MIDI",
 		"parameters": [
 			[1, 32, 8, "Length A."],
 			[1, 32, 8, "Length B."],
 			[0, 31, 0, "Pulse A."],
-			[0, 31, 0, "Pulse B."]
+			[0, 31, 0, "Pulse B."],
+			[0, 15, 0, "MIDI clock divisor."]
 		]
 	},
 	{
@@ -967,7 +981,9 @@
 			"Z sets the amplitude of B"
 		],
 		"extra": false,
-		"parameters": []
+		"parameters": [
+			[-99, 99, 0, "Reference frequency."]
+		]
 	},
 	{
 		"algorithm": "G-6",
@@ -988,7 +1004,8 @@
 			[0, 11, 8, "Clock divisor for X."],
 			[0, 3, 0, "Y mode."],
 			[-120, -120, 0, "Tempo"],
-			[0, 1, 0, "Z mode."]
+			[0, 1, 0, "Z mode."],
+			[0, 1, 0, "Ratchet mode."]
 		]
 	},
 	{
@@ -1009,7 +1026,8 @@
 			[-1, 99, -1, "Scale."],
 			[0, 32, 0, "Portamento."],
 			[0, 100, 0, "Interrupt."],
-			[0, 2, 0, "Priority."]
+			[0, 2, 0, "Priority."],
+			[0, 1, 0, "Mode."]
 
 		]
 	},
@@ -1035,7 +1053,7 @@
 	{
 		"algorithm": "H-1",
 		"name": "Crossfade/Pan",
-		"category": "Modulation Effects",
+		"category": "Utility",
 		"video": "Ar7Gym6SOSE",
 		"io": [
 			"A = Mix of X & Y according to Z",
@@ -1117,14 +1135,15 @@
 			"Y is reset input",
 			"Z sets the 'pulses' for pattern 2"
 		],
-		"extra": false,
+		"extra": "Receives MIDI",
 		"parameters": [
 			[1, 16, 16, "Steps."],
 			[1, 16, 4, "Pulses (pattern 1)."],
 			[0, 96, 0, "A Rotation."],
 			[0, 31, 0, "Pulse length."],
 			[-1, 96, -1, "B Rotation."],
-			[0, 96, 0, "Repeat."]
+			[0, 96, 0, "Repeat."],
+			[-15, 15, 0, "MIDI clock divisor."]
 		]
 	},
 	{
@@ -1378,7 +1397,8 @@
 			[0, 99, 0, "Envelope time."],
 			[-1, 4, -1, "MIDI mode."],
 			[0, 24, 2, "Pitch bend depth."],
-			[0, 1, 1, "Selects the panning option."]
+			[0, 1, 1, "Selects the panning option."],
+			[0, 60, 0, "Gate Offset."]
 		]
 	},
 	{
@@ -1450,7 +1470,8 @@
 			[-8, 8, 0, "Octave shift."],
 			[0, 99, 0, "Envelope time."],
 			[-1, 4, -1, "MIDI mode."],
-			[0, 24, 2, "Pitch bend depth."]
+			[0, 24, 2, "Pitch bend depth."],
+			[0, 63, 0, "Gate Offset."]
 		]
 	},
 	{
@@ -1584,7 +1605,8 @@
 			[0, 32, 32, "Input X attenuation."],
 			[-1, 32, 31, "Input Y attenuation."],
 			[-31, 31, 0, "Transpose."],
-			[0, 31, 0, "Offset."]
+			[0, 31, 0, "Offset."],
+			[0, 1, 0, "Mode."]
 		]
 	},
 	{
@@ -1657,7 +1679,8 @@
 			[0, 5, 1, "Character."],
 			[-1, 31, 8, "Lowpass filter."],
 			[0, 12, 0, "Gain."],
-			[-33, 32, -33, "Wet/dry."]
+			[-33, 32, -33, "Wet/dry."],
+			[0, 99, 0, "High pass filter."]
 		]
 	},
 	{
@@ -1679,7 +1702,8 @@
 			[0, 5, 1, "Character."],
 			[-1, 31, 8, "Lowpass filter."],
 			[0, 12, 0, "Gain."],
-			[-33, 32, -33, "Wet/dry."]
+			[-33, 32, -33, "Wet/dry."],
+			[0, 99, 0, "High pass filter."]
 		]
 	},
 	{
@@ -1700,7 +1724,8 @@
 			[0, 5, 1, "Character."],
 			[-1, 31, 8, "Lowpass filter."],
 			[0, 12, 0, "Gain."],
-			[-33, 32, -33, "Wet/dry."]
+			[-33, 32, -33, "Wet/dry."],
+			[0, 99, 0, "High pass filter."]
 		]
 	},
 	{
@@ -1878,7 +1903,6 @@
 			"Z is threshold"
 		],
 		"extra": "Knob recorder enabled (use S knob to access parameters)",
-		"extra": false,
 		"parameters": [
 			[0, 3, 0, "Mode."]
 		]
@@ -1911,14 +1935,15 @@
 			"Y is right input",
 			"A is left output",
 			"B is right output",
-			"Z is tape speed"
+			"Z is tape speed or feedback"
 		],
 		"extra": false,
 		"parameters": [
 			[0, 26, 26, "Tape length."],
 			[-9, 9, 0, "Fine length control."],
-			[0, 36, 24, "Feedback."],
-			[0, 1, 0, "Output mode."]
+			[-1, 36, 24, "Feedback."],
+			[0, 1, 0, "Output mode."],
+			[-8, 16, 0, "Tape speed."]
 		]
 	},
 	{
@@ -2001,6 +2026,41 @@
 			[0, 99, 10, "Slew."],
 			[0, 32, 15, "Crossover"],
 			[0, 64, 15, "Bass modulation."]
+		]
+	},
+	{
+		"algorithm": "N-3",
+		"name": "Attenuverter/Offset",
+		"category": "Utility",
+		"video": "00zz1_4qjTE",
+		"io": [
+			"A = X * scale + offset",
+			"B = Y * scale + offset",
+			"Z is not used"
+		],
+		"extra": false,
+		"parameters": [
+			[-100, 100, 50, "Attenuversion A."],
+			[-100, 100, 0, "Offset A."],
+			[-100, 100, 50, "Attenuversion B."],
+			[-100, 100, 0, "Offset B."]
+		]
+	},
+	{
+		"algorithm": "N-4",
+		"name": "Low Pass Gate",
+		"category": "Envelopes & VCA",
+		"video": "8hLcG8UUYGw",
+		"io": [
+			"X and Y are stereo inputs",
+			"A and B are stereo outputs",
+			"Z is frequency/'strike'"
+		],
+		"extra": false,
+		"parameters": [
+			[0, 31, 0, "Resonance."],
+			[1, 99, 50, "Up slew."],
+			[1, 99, 50, "Down slew."]
 		]
 	},
 	{

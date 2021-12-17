@@ -79,7 +79,7 @@ window.onload = function() {
 	displayByName = document.getElementById('by_name');
 	displayByCategory = document.getElementById('by_category');
 
-	getJSON('algorithms.json', function(response) {
+	getJSON('algorithms.json?r=021' + Math.random(), function(response) {
 		algorithmList = response;
 
 		for (var i = 0; i < algorithmList.length; i++) {
@@ -89,7 +89,7 @@ window.onload = function() {
 		}
 		nameList.sort();
 
-		getJSON('algorithms_charts.json', function(response) {
+		getJSON('algorithms_charts.json?r=021' + Math.random(), function(response) {
 				algorithmCharts = response;
 				writeList();
 		});

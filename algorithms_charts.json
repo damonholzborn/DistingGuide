@@ -106,6 +106,36 @@
 			"columnAlignment": ["center", "center"]
 		}
 	],
+	"B-2": [
+		{
+			"chartLabel": "Type (parameters 2 & 3)",
+			"horizontalHeader": [
+				"Param Val",
+				"Mode"
+			],
+			"chartValues": [
+				0,
+				"Linear.",
+				1,
+				"Logarithmic."
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		},
+		{
+			"chartLabel": "Mode (parameter 4)",
+			"horizontalHeader": [
+				"Param Val",
+				"Mode"
+			],
+			"chartValues": [
+				0,
+				"Outputs A & B are both based on the sum of X + Y.",
+				1,
+				"A is based on X, and B is based on Y."
+			],
+			"columnAlignment": ["center", "left"]
+		}
+	],
 	"B-4": [
 		{
 			"chartLabel": "Delay time multiplier (parameter 0)",
@@ -409,7 +439,6 @@
 			],
 			"columnAlignment": ["center", "left"]
 		}
-
 	],
 	"D-2": [
 		{
@@ -631,7 +660,7 @@
 				"Tap Tempo",
 				"Push Z five times to start the clock (i.e. a one bar count-in in 4 time). Hold Z for 2 seconds to stop the clock. While the clock is running, you may continue to tap Z to correct or change the tempo."
 			],
-			"columnAlignment": ["center", "left", "left", "left"]
+			"columnAlignment": ["center", "left", "left"]
 		},
 		{
 			"chartLabel": "Incoming clock divisor for outputs A, B (parameters 1, 2)",
@@ -733,6 +762,74 @@
 				"Both the X clock and the internal clock are controlled by Y as above."
 			],
 			"columnAlignment": ["center", "left", "left", "left"]
+		},
+		{
+			"chartLabel": "Ratchet mode (parameter 7)",
+			"horizontalHeader": [
+				"Value",
+				"Ratchet mode A",
+				"Ratchet mode B"
+			],
+			"chartValues": [
+				"0",
+				"Off.",
+				"Off.",
+				"1",
+				"2's",
+				"Off",
+				"2",
+				"Off",
+				"2's",
+				"3",
+				"2's",
+				"2's",
+				"4",
+				"2's/3's",
+				"Off",
+				"5",
+				"Off",
+				"2's/3's",
+				"6",
+				"2's/3's",
+				"2's/3's"
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		}
+	],
+	"G-7": [
+		{
+			"chartLabel": "Mode of operation (parameter 6)",
+			"horizontalHeader": [
+				"Param Val",
+				"Mode"
+			],
+			"chartValues": [
+				0,
+				"Output A is the pitch CV output; output B is the gate output.",
+				1,
+				"Output A is the pitch CV output; output B is another pitch CV output using the next MIDI channel up.",
+				2,
+				"Output A is the pitch CV output; output B is a velocity gate output."
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		},
+		{
+			"chartLabel": "Outputs A & B can also be controlled directly via MIDI CCs according to the following table",
+			"horizontalHeader": [
+				"CC numbers (A/B)",
+				"Output voltage range"
+			],
+			"chartValues": [
+				"33/34",
+				"-5V to +5V",
+				"35/36",
+				"0V to 10V.",
+				"37/38",
+				"0V to 5V.",
+				"39/40",
+				"0V to 8V."
+			],
+			"columnAlignment": ["center", "center"]
 		}
 	],
 	"H-1": [
@@ -1094,6 +1191,22 @@
 			"columnAlignment": ["center", "left"]
 		}
 	],
+	"K-5": [
+		{
+			"chartLabel": "Mode of operation (parameter 5)",
+			"horizontalHeader": [
+				"Param Val",
+				"Mode"
+			],
+			"chartValues": [
+				0,
+				"Incoming CV is quantised to the closest pitch value defined by the chosen scale.",
+				1,
+				"Incoming CV is assumed linear 1V/octave and is used to look up a note in the scale according to the keyboard map, based on the nearest semitone value of the input."
+			],
+			"columnAlignment": ["center", "left"]
+		}
+	],
 	"K-6": [
 		{
 			"chartLabel": "Output mode A & B (parameter 2)",
@@ -1226,9 +1339,13 @@
 				4,
 				"NOR",
 				5,
-				"XNOR"
+				"XNOR",
+				6,
+				"SR flip-flop",
+				7,
+				"D flip-flop"
 			],
-			"columnAlignment": ["center", "center"]
+			"columnAlignment": ["center", "left"]
 		}
 	],
 	"M-6": [
