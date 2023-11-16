@@ -12,7 +12,9 @@
 		"extra": "Knob recorder enabled (use S knob to access parameters)",
 		"parameters": [
 			[0, 1, 0, "Z Mode."],
-			[0, 2, 0, "Sum Mode."]
+			[0, 2, 0, "Sum Mode."],
+			[1, 12, 1, "Divisor."],
+			[0, 5, 0, "Modulo."]
 		]
 	},
 	{
@@ -28,7 +30,7 @@
 		"extra": "Knob recorder enabled (use S knob to access parameters)",
 		"parameters": [
 			[0, 1, 0, "Z Mode (when 1, the scale is not restricted to integer steps, and changes smoothly with Z)."],
-			[-10, 10, 0, "Y Offset"]
+			[-20, 20, 0, "Y Offset"]
 		]
 	},
 	{
@@ -91,7 +93,8 @@
 			[-31, 31, 0, "Key."],
 			[0, 31, 0, "Offset."],
 			[0, 1, 0, "MIDI Gate."],
-			[-48, 48, 0, "Transpose."]
+			[-48, 48, 0, "Transpose."],
+			[0, 2, 0, "MIDI Mode."]
 		]
 	},
 	{
@@ -123,7 +126,11 @@
 		"extra": "Knob recorder enabled (use S knob to access parameters)",
 		"parameters": [
 			[0, 1, 0, "Type A."],
-			[0, 1, 1, "Type B."]
+			[0, 1, 1, "Type B."],
+			[-40, 40, 0, "X offset."],
+			[-40, 40, 0, "Y offset."],
+			[0, 32, 32, "Mix A."],
+			[0, 32, 32, "Mix B."]
 		]
 	},
 	{
@@ -191,10 +198,13 @@
 			"A = output according to mode",
 			"B = output according to mode"
 		],
-		"extra": "Tap tempo enabled",
+		"extra": "Tap tempo enabled, Receives MIDI",
 		"parameters": [
 			[-15, 8, 0, "Delay time multiplier."],
-			[0, 2, 0, "Output mode."]
+			[0, 2, 0, "Output mode."],
+			[-33, 32, -33, "Mix."],
+			[-1, 32, -1, "Feedback."],
+			[0, 15, 0, "MIDI clock divider."]
 		]
 	},
 	{
@@ -253,8 +263,9 @@
 			[-16, 8, 0, "Octave shift."],
 			[0, 32, 32, "Sets an attenuation for output A."],
 			[0, 32, 32, "Sets an attenuation for output B."],
-			[0, 4, 1, "Type A."],
-			[0, 4, 3, "Type B."]
+			[0, 5, 1, "Type A."],
+			[0, 5, 3, "Type B."],
+			[-51, 51, -51, "Fine tune/enable sync."]
 		]
 	},
 	{
@@ -281,18 +292,21 @@
 	},
 	{
 		"algorithm": "C-1",
-		"name": "Precision Adder (fractional offsets)",
+		"name": "Counter",
 		"category": "CV Processing",
-		"video": "no video",
+		"video": "5E53P6wa7ps",
 		"io": [
-			"A = X + Y + offset",
-			"B = X - Y - offset",
-			"offset in steps derived from Z"
+			"X is clock input",
+			"Y is reset input",
+			"A and B are clock outputs"
 		],
-		"extra": "Knob recorder enabled (use S knob to access parameters)",
+		"extra": "Z press resets to step 1, Receives MIDI",
 		"parameters": [
-			[1, 12, 12, "Sets the offset divisor."],
-			[0, 2, 0, "Sum Mode."]
+			[1, 32, 8, "Sets the number of steps."],
+			[0, 32, 0, "Skips."],
+			[1, 50, 10, "Clock pulse speed."],
+			[1, 50, 10, "Clock pulse length."],
+			[0, 15, 0, "MIDI clock divider."]
 		]
 	},
 	{
@@ -325,11 +339,12 @@
 			"A is left output",
 			"B is right output"
 		],
-		"extra": "Tap tempo enabled",
+		"extra": "Tap tempo enabled, Receives MIDI",
 		"parameters": [
-			[0, 1, 0, "Output mode."],
+			[-33, 32, -33, "Mix."],
 			[-15, 8, 0, "Delay time multiplier."],
-			[-32, 32, -32, "Input pan."]
+			[-32, 32, -32, "Input pan."],
+			[0, 15, 0, "MIDI clock divider."]
 		]
 	},
 	{
@@ -338,7 +353,7 @@
 		"category": "Delay",
 		"video": "WdUGXBpLFt4",
 		"io": [
-			"X is audio input Y is clock",
+			"X is audio input Y is clock, Receives MIDI",
 			"Z is input pan",
 			"A is left output",
 			"B is right output"
@@ -347,7 +362,8 @@
 		"parameters": [
 			[0, 31, 24, "Feedback."],
 			[-15, 8, 0, "Delay time multiplier."],
-			[0, 1, 0, "Output mode."]
+			[-33, 32, -33, "Mix."],
+			[0, 15, 0, "MIDI clock divider."]
 		]
 	},
 	{
@@ -411,15 +427,17 @@
 		"video": "Tv5c8gPYwFs",
 		"io": [
 			"X is signal input",
-			"Y is sample rate input Z sets bit reduction",
+			"Y is sample rate or signal (stereo) input",
+			"Z sets bit reduction",
 			"A is signal output",
-			"B is comparator output"
+			"B is comparator or signal (stereo) output"
 		],
 		"extra": false,
 		"parameters": [
 			[-31, 31, 0, "Applies an offset to the Y input."],
 			[0, 7, 0, "Selects the bit reduction mode."],
-			[0, 7, 0, "Selects the bit mangling mode."]
+			[0, 7, 0, "Selects the bit mangling mode."],
+			[0, 1, 0, "Stereo mode."]
 		]
 	},
 	{
@@ -432,7 +450,7 @@
 			"A & B are stereo audio output",
 			"Z is filter sweep"
 		],
-		"extra": false,
+		"extra": "Press Z to set filter to center (use S knob to access parameters)",
 		"parameters": [
 			[0, 31, 0, "Filter resonance."]
 		]
@@ -454,7 +472,9 @@
 			[0, 43, 43, "Tape length."],
 			[-9, 9, 0, "Fine length control."],
 			[-8, 16, 0, "Tape speed."],
-			[0, 2, 0, "Output mode."]
+			[0, 2, 0, "Output mode."],
+			[-33, 32, -33, "Mix."],
+			[-1, 32, -1, "Feedback."]
 		]
 	},
 	{
@@ -830,7 +850,7 @@
 			"Y is modify input",
 			"Z sets the randomness",
 			"A is unipolar output",
-			"B is bipolar output"
+			"B is bipolar output or trigger"
 		],
       "extra": "Receives MIDI",
 		"parameters": [
@@ -839,7 +859,8 @@
 			[0, 31, 0, "Slew rate."],
 			[-40, 40, 40, "Output attenuverter."],
 			[-40, 40, 0, "Offset."],
-			[0, 15, 0, "MIDI clock divisor."]
+			[0, 15, 0, "MIDI clock divisor."],
+			[0, 5, 0, "Output B signal."]
 		]
 	},
 	{
@@ -951,7 +972,8 @@
 		"extra": false,
 		"parameters": [
 			[0, 11, 0, "Semitone."],
-			[-1, 9, 4, "Octave"]
+			[-1, 9, 4, "Octave"],
+			[-99, 99, 0, "Tuning"]
 		]
 	},
 	{
@@ -1045,9 +1067,9 @@
 		"extra": "Outputs MIDI",
 		"parameters": [
 			[0, 99, 16, "Channel offset."],
-			[0, 127, 0, "Z mode."],
-			[0, 99, 0, "X CC."],
-			[0, 99, 0, "Y CC."]
+			[-127, 127, 0, "Z mode."],
+			[-99, 99, 0, "X CC."],
+			[-99, 99, 0, "Y CC."]
 		]
 	},
 	{
@@ -1101,7 +1123,8 @@
 			[0, 32, 32, "Input X attenuation."],
 			[0, 32, 32, "Input Y attenuation."],
 			[-31, 31, 0, "X transpose."],
-			[-31, 31, 0, "Y transpose."]
+			[-31, 31, 0, "Y transpose."],
+			[-31, 31, 0, "Key."]
 		]
 	},
 	{
@@ -1120,7 +1143,9 @@
 			[0, 32, 32, "Input Y attenuation."],
 			[-18, 18, 0, "X scale/trigger mode."],
 			[-18, 18, 0, "Y scale/trigger mode."],
-			[0, 1, 0, "MIDI Gate."]
+			[0, 1, 0, "MIDI Gate."],
+			[0, 31, 0, "Offset."],
+			[-31, 31, 0, "Key."]
 		]
 	},
 	{
@@ -1216,10 +1241,12 @@
 			"A is left audio output",
 			"B is right audio output"
 		],
-		"extra": "Receives MIDI",
+		"extra": "Z press retriggers sample, Receives MIDI",
 		"parameters": [
 			[0, 99, 0, "Folder."],
-			[0, 99, 0, "Envelope time."]
+			[0, 99, 0, "Envelope time."],
+			[0, 127, 0, "Start offset."],
+			[0, 2, 0, "Z mode."]
 		]
 	},
 	{
@@ -1234,7 +1261,7 @@
 			"A is left audio output",
 			"B is right audio output"
 		],
-		"extra": "Receives MIDI",
+		"extra": "Z press retriggers sample, Receives MIDI",
 		"parameters": [
 			[0, 99, 0, "Folder."],
 			[0, 99, 0, "Envelope time."],
@@ -1253,13 +1280,14 @@
 			"A is left audio output",
 			"B is right audio output"
 		],
-		"extra": "Receives MIDI",
+		"extra": "Z press retriggers sample, Receives MIDI",
 		"parameters": [
 			[0, 99, 0, "Folder."],
 			[-8, 8, 0, "Octave shift."],
 			[0, 99, 0, "Envelope time."],
 			[-1, 4, -1, "MIDI mode."],
-			[0, 24, 2, "Pitch bend depth."]
+			[0, 24, 2, "Pitch bend depth."],
+			[0, 127, 0, "Start offset."]
 		]
 	},
 	{
@@ -1274,11 +1302,12 @@
 			"A is left audio output",
 			"B is right audio output"
 		],
-		"extra": "Receives MIDI",
+		"extra": "Z press retriggers sample, Receives MIDI",
 		"parameters": [
 			[0, 99, 0, "Folder."],
 			[0, 99, 0, "Selects the sample."],
-			[0, 99, 0, "Envelope time."]
+			[0, 99, 0, "Envelope time."],
+			[0, 127, 0, "Start offset."]
 		]
 	},
 	{
@@ -1293,7 +1322,7 @@
 			"A is left audio output",
 			"B is right audio output"
 		],
-		"extra": "Receives MIDI",
+		"extra": "Z press retriggers sample, Receives MIDI",
 		"parameters": [
 			[0, 99, 0, "Folder."],
 			[-49, 49, 0, "Y offset."],
@@ -1375,7 +1404,8 @@
 		],
 		"extra": "Outputs MIDI",
 		"parameters": [
-			[-1, 31, -1, "Selects the MIDI file."]
+			[-1, 31, -1, "Selects the MIDI file."],
+			[0, 96, 0, "Clock multiplier."]
 		]
 	},
 	{
@@ -1585,7 +1615,8 @@
 			[-32, 32, 0, "Y Offset."],
 			[-32, 32, 32, "Output A attenuverter."],
 			[-32, 32, -32, "Output B attenuverter."],
-			[-15, 8, 0, "Envelope time multiplier."]
+			[-15, 8, 0, "Envelope time multiplier."],
+			[0, 2, 0, "Trigger mode."]
 		]
 	},
 	{
@@ -1845,8 +1876,8 @@
 		],
 		"extra": false,
 		"parameters": [
-			[0, 6, 1, "Output type A."],
-			[0, 6, 0, "Output type B."],
+			[0, 8, 1, "Output type A."],
+			[0, 8, 0, "Output type B."],
 			[-32, 32, 0, "LFO speed range."],
 			[-32, 32, 0, "Ramp time range."],
 			[-32, 32, 32, "Attenuverter A."],
@@ -1942,7 +1973,7 @@
 			[0, 26, 26, "Tape length."],
 			[-9, 9, 0, "Fine length control."],
 			[-1, 36, 24, "Feedback."],
-			[0, 1, 0, "Output mode."],
+			[-33, 32, -33, "Mix."],
 			[-8, 16, 0, "Tape speed."]
 		]
 	},
@@ -2082,6 +2113,43 @@
 			[0, 1, 0, "Y Mode."],
 			[0, 99, 0, "Masking."],
 			[-16, 8, 0, "Octave."]
+		]
+	},
+	{
+		"algorithm": "N-6",
+		"name": "Phase Shifter",
+		"category": "Modulation Effects",
+		"video": "MKjDCUPGxvU",
+		"io": [
+			"X is signal",
+			"Y is phase shift",
+			"Z is wet/dry",
+			"A & B are signal outputs"
+		],
+		"extra": false,
+		"parameters": [
+			[0, 1, 0, "Output mode."],
+			[-32, 32, 0, "Y Offset."],
+			[0, 1, 0, "LFO enable."],
+			[-99, 99, 50, "LFO speed."]
+		]
+	},
+	{
+		"algorithm": "N-7",
+		"name": "Frequency Shifter",
+		"category": "Modulation Effects",
+		"video": "FaH9u9E2K9k",
+		"io": [
+			"X is signal",
+			"Y is frequency shift",
+			"Z is frequency shift",
+			"A & B are signal outputs"
+		],
+		"extra": false,
+		"parameters": [
+			[0, 3, 1, "Range."],
+			[0, 1, 0, "B mode."],
+			[0, 1, 1, "Include Z."]
 		]
 	},
 	{

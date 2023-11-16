@@ -42,7 +42,7 @@ header {
     grid-template-rows: 31px 80px auto;
 
     transition: var(--headertransition);
-}   
+}
 
 header.open {
     height: auto;
@@ -251,7 +251,7 @@ td, th {
     background: var(--hl-color);
     transition: var(--displaybytransition);
   }
-  
+
 .display_link.selected:after {
     width: 100%;
 }
@@ -321,10 +321,10 @@ td, th {
     background-image: url('heart_outline.png');
     display: inline-block;
     background-size: 20px 20px;
-    width: 20px; 
+    width: 20px;
     height: 20px;
     background-size: 16px 16px;
-    width: 16px; 
+    width: 16px;
     height: 16px;
     content:"";
 }
@@ -343,6 +343,12 @@ td, th {
     white-space: nowrap;
 }
 
+
+#contribute {
+	font-size: 0.7em;
+    padding-top: 18px;
+}
+
 /* ********* Media Queries ********* */
 
 @media only screen and (min-width: 900px) {
@@ -353,13 +359,13 @@ td, th {
     }
 
     #welcome_text {
-        width: calc(100% - 325px);
-        max-width: 900px;
+        width: calc(100% - 376px);
+        max-width: 1030px;
         float: left;
     }
 
     #contact_info {
-        width: 225px;
+        width: 276px;
         padding-left: 60px;
         padding-right: 40px;
         float: right;
@@ -381,10 +387,10 @@ td, th {
     .title {
         /* float: none; */
     }
-    
+
     .listing {
         grid-template-columns: 1fr 44px 24px;
-    
+
         /* grid-template-rows: 31px 80px auto; */
     }
 

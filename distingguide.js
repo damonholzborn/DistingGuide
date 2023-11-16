@@ -67,6 +67,12 @@ else {
 }
 
 window.onload = function() {
+	if (location.href.indexOf('localhost') !== -1) {
+		var liveScript = document.createElement('script');
+		liveScript.src = 'https://livejs.com/live.js';
+		document.head.appendChild(liveScript);
+	}
+
 	headerArea = document.getElementById('header');
 	menuButton = document.getElementById('menu_button');
 	displaySelect = document.getElementById('display_select');
@@ -79,7 +85,7 @@ window.onload = function() {
 	displayByName = document.getElementById('by_name');
 	displayByCategory = document.getElementById('by_category');
 
-	getJSON('algorithms.json?r=021' + Math.random(), function(response) {
+	getJSON('algorithms.json?r=022' + Math.random(), function(response) {
 		algorithmList = response;
 
 		for (var i = 0; i < algorithmList.length; i++) {
@@ -89,7 +95,7 @@ window.onload = function() {
 		}
 		nameList.sort();
 
-		getJSON('algorithms_charts.json?r=021' + Math.random(), function(response) {
+		getJSON('algorithms_charts.json?r=022' + Math.random(), function(response) {
 				algorithmCharts = response;
 				writeList();
 		});

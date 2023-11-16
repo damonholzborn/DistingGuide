@@ -3,7 +3,7 @@
 		{
 			"chartLabel": "Sum mode (parameter 1)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Output A",
 				"Output B",
 				"Notes"
@@ -90,7 +90,7 @@
 		{
 			"chartLabel": "Noise colour (parameter 2)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Noise colour"
 			],
 			"chartValues": [
@@ -110,7 +110,7 @@
 		{
 			"chartLabel": "Type (parameters 2 & 3)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Mode"
 			],
 			"chartValues": [
@@ -124,7 +124,7 @@
 		{
 			"chartLabel": "Mode (parameter 4)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Mode"
 			],
 			"chartValues": [
@@ -140,7 +140,7 @@
 		{
 			"chartLabel": "Delay time multiplier (parameter 0)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Multiplier"
 			],
 			"chartValues": [
@@ -198,7 +198,7 @@
 		{
 			"chartLabel": "Output mode (Parameter 1)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Output mode"
 			],
 			"chartValues": [
@@ -210,7 +210,49 @@
 				"A & B are delay only."
 			],
 			"columnAlignment": ["center", "left", "left", "left", "left", "left"]
-		}
+		},
+		{
+         "chartLabel": "MIDI clock divider (parameter 4)",
+         "horizontalHeader": [
+            "Param val",
+            "Clock Divisor"
+         ],
+         "chartValues": [
+            "0",
+            "MIDI clock off",
+            "1",
+            "1/32",
+            "2",
+            "1/16 triplet",
+            "3",
+            "1/16",
+            "4",
+            "1/8  triplet",
+            "5",
+            "3/32",
+            "6",
+            "1/8",
+            "7",
+            "1/4 triplet",
+            "8",
+            "3/16",
+            "9",
+            "1/4",
+            "10",
+            "1/2 triplet",
+            "11",
+            "3/8",
+            "12",
+            "1/2",
+            "13",
+            "1/1 triplet",
+            "14",
+            "3/4",
+            "15",
+            "1/1"
+         ],
+         "columnAlignment": ["center", "left", "left", "left"]
+      }
 	],
 	"B-5": [
 		{
@@ -238,7 +280,7 @@
 	],
 	"B-6": [
 		{
-			"chartLabel": "Waveshape (Y):",
+			"chartLabel": "Waveshape (Y)",
 			"horizontalHeader": [
 				"Input Y",
 				"-5V",
@@ -264,7 +306,7 @@
 		{
 			"chartLabel": "Waveform A, B (parameters 3, 4)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Waveform"
 			],
 			"chartValues": [
@@ -288,7 +330,7 @@
 		{
 			"chartLabel": "Waveform (parameter 4)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"WaveformA",
 				"WaveformB"
 			],
@@ -335,28 +377,90 @@
 			"columnAlignment": ["center", "center", "center"]
 		}
 	],
-	"C-1": [
+	"C-3": [
 		{
-			"chartLabel": "Sum mode (parameter 1)",
+			"chartLabel": "MIDI clock divider (parameter 3)",
 			"horizontalHeader": [
-				"Param Val",
-				"Output A",
-				"Output B",
-				"Notes"
+				"Param val",
+				"Clock Divisor"
 			],
 			"chartValues": [
-				0,
-				"Sum of inputs X & Y, plus the offset.",
-				"Difference between inputs X & Y, minus the offset.",
-				"With nothing plugged into input X, B is therefore simply an inverted copy of Y.",
-				1,
-				"X plus the offset.",
-				"Y minus the offset.",
-				"This is particularly useful for shifting between bipolar (e.g. ±5V) and unipolar (e.g. 0-10V) CVs and back again.",
-				2,
-				"X plus the offset.",
-				"Y plus the offset.",
-				" "
+				"0",
+				"MIDI clock off",
+				"1",
+				"1/32",
+				"2",
+				"1/16 triplet",
+				"3",
+				"1/16",
+				"4",
+				"1/8  triplet",
+				"5",
+				"3/32",
+				"6",
+				"1/8",
+				"7",
+				"1/4 triplet",
+				"8",
+				"3/16",
+				"9",
+				"1/4",
+				"10",
+				"1/2 triplet",
+				"11",
+				"3/8",
+				"12",
+				"1/2",
+				"13",
+				"1/1 triplet",
+				"14",
+				"3/4",
+				"15",
+				"1/1"
+			],
+			"columnAlignment": ["center", "left", "left", "left"]
+		}
+	],
+	"C-4": [
+		{
+			"chartLabel": "MIDI clock divider (parameter 3)",
+			"horizontalHeader": [
+				"Param val",
+				"Clock divisor"
+			],
+			"chartValues": [
+				"0",
+				"MIDI clock off",
+				"1",
+				"1/32",
+				"2",
+				"1/16 triplet",
+				"3",
+				"1/16",
+				"4",
+				"1/8  triplet",
+				"5",
+				"3/32",
+				"6",
+				"1/8",
+				"7",
+				"1/4 triplet",
+				"8",
+				"3/16",
+				"9",
+				"1/4",
+				"10",
+				"1/2 triplet",
+				"11",
+				"3/8",
+				"12",
+				"1/2",
+				"13",
+				"1/1 triplet",
+				"14",
+				"3/4",
+				"15",
+				"1/1"
 			],
 			"columnAlignment": ["center", "left", "left", "left"]
 		}
@@ -381,7 +485,7 @@
 		{
 			"chartLabel": "Bit reduction type (parameter 1)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Positive signal",
 				"Positive signal"
 			],
@@ -416,7 +520,7 @@
 		{
 			"chartLabel": "Bit mangling mode (parameter 2)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Bit mangling"
 			],
 			"chartValues": [
@@ -444,7 +548,7 @@
 		{
 			"chartLabel": "Output mode (parameter 3)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Output mode"
 			],
 			"chartValues": [
@@ -462,7 +566,7 @@
 		{
 			"chartLabel": "Trigger Mode (parameter 0)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Trigger Mode"
 			],
 			"chartValues": [
@@ -478,7 +582,7 @@
 		{
 			"chartLabel": "Output A end-of-cycle mode (parameter 2)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Description"
 			],
 			"chartValues": [
@@ -492,7 +596,7 @@
 		{
 			"chartLabel": "Trigger Mode (parameter 0)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Trigger Mode"
 			],
 			"chartValues": [
@@ -512,7 +616,7 @@
 		{
 			"chartLabel": "Output A end-of-cycle mode (parameter 2)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Description"
 			],
 			"chartValues": [
@@ -526,7 +630,7 @@
 		{
 			"chartLabel": "Trigger Mode (parameter 0)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Trigger Mode"
 			],
 			"chartValues": [
@@ -542,7 +646,7 @@
 		{
 			"chartLabel": "Output A end-of-cycle mode (parameter 2)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Description"
 			],
 			"chartValues": [
@@ -556,7 +660,7 @@
 		{
 			"chartLabel": "Output A end-of-cycle mode (parameter 1)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Description"
 			],
 			"chartValues": [
@@ -570,7 +674,7 @@
 		{
 			"chartLabel": "Output A end-of-cycle mode (parameter 1)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Description"
 			],
 			"chartValues": [
@@ -584,7 +688,7 @@
 		{
 			"chartLabel": "Output A end-of-cycle mode (parameter 1)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Description"
 			],
 			"chartValues": [
@@ -598,7 +702,7 @@
 		{
 			"chartLabel": "Output A end-of-cycle mode (parameter 1)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Description"
 			],
 			"chartValues": [
@@ -608,11 +712,35 @@
 			"columnAlignment": ["center", "left", "left", "left"]
 		}
 	],
+	"F-5": [
+		{
+			"chartLabel": "Output B mode (parameter 6)",
+			"horizontalHeader": [
+				"Param val",
+				"Output B"
+			],
+			"chartValues": [
+				0,
+				"Bipolar CV.",
+				1,
+				"Trigger if the current bit is high.",
+				2,
+				"Trigger if the current bit is low.",
+				3,
+				"Trigger if the current bit changes.",
+				4,
+				"Trigger if the current bit change from low to high.",
+				5,
+				"Trigger if the current bit change from high to low."
+			],
+			"columnAlignment": ["center", "left"]
+		}
+	],
 	"G-6": [
 		{
 			"chartLabel": "Mode of operation (parameter 0)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"A/B driven by",
 				"MIDI driven by",
 				"Typical Application"
@@ -665,7 +793,7 @@
 		{
 			"chartLabel": "Incoming clock divisor for outputs A, B (parameters 1, 2)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Output A/B"
 			],
 			"chartValues": [
@@ -709,7 +837,7 @@
 		{
 			"chartLabel": "Outgoing clock divisor (parameter 3)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Input X"
 			],
 			"chartValues": [
@@ -800,7 +928,7 @@
 		{
 			"chartLabel": "Mode of operation (parameter 6)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Mode"
 			],
 			"chartValues": [
@@ -836,7 +964,7 @@
 		{
 			"chartLabel": "Pan/<wbr>crossfade law (parameter 0)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Law",
 				"Notes"
 			],
@@ -859,7 +987,7 @@
 		{
 			"chartLabel": "Clipping/<wbr>saturation mode (parameter 1)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Mode",
 				"Notes"
 			],
@@ -879,7 +1007,7 @@
 		{
 			"chartLabel": "Output B options (parameter 2)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Option",
 				"Notes"
 			],
@@ -901,7 +1029,7 @@
 		{
 			"chartLabel": "Mode (parameter 0)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Mode"
 			],
 			"chartValues": [
@@ -978,7 +1106,7 @@
 		{
 			"chartLabel": "Scales (parameters 2, 3)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Scale"
 			],
 			"chartValues": [
@@ -1026,7 +1154,7 @@
 		{
 			"chartLabel": "Z function (parameter 0)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Z function"
 			],
 			"chartValues": [
@@ -1052,7 +1180,7 @@
 		{
 			"chartLabel": "Noise color A, B (parameters 0, 1)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Noise colour"
 			],
 			"chartValues": [
@@ -1098,7 +1226,7 @@
 		{
 			"chartLabel": "Key (parameter 2)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Key"
 			],
 			"chartValues": [
@@ -1135,7 +1263,7 @@
 		{
 			"chartLabel": "Samples affected by Z (parameter 4)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Description"
 			],
 			"chartValues": [
@@ -1155,7 +1283,7 @@
 		{
 			"chartLabel": "Gate mode (parameter 3)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Gate mode"
 			],
 			"chartValues": [
@@ -1173,7 +1301,7 @@
 		{
 			"chartLabel": "Output B option/<wbr>detune (parameter 3)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Output B"
 			],
 			"chartValues": [
@@ -1191,11 +1319,29 @@
 			"columnAlignment": ["center", "left"]
 		}
 	],
+	"K-4": [
+		{
+			"chartLabel": "Triggering mode (parameter 5)",
+			"horizontalHeader": [
+				"Param val",
+				"Triggering mode"
+			],
+			"chartValues": [
+				0,
+				"Envelope triggered by every pulse on Z.",
+				1,
+				"Envelope cannot be retriggered during a cycle.",
+				2,
+				"Gated - envelope ends when Z goes low."
+			],
+			"columnAlignment": ["center", "left"]
+		}
+	],
 	"K-5": [
 		{
 			"chartLabel": "Mode of operation (parameter 5)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Mode"
 			],
 			"chartValues": [
@@ -1211,7 +1357,7 @@
 		{
 			"chartLabel": "Output mode A & B (parameter 2)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Output mode"
 			],
 			"chartValues": [
@@ -1229,7 +1375,7 @@
 		{
 			"chartLabel": "Vowel A, B (parameters 0, 1)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Vowel",
 				"Example word"
 			],
@@ -1272,7 +1418,7 @@
 		{
 			"chartLabel": "Output waveform type A, B (parameters 0, 1)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Waveform"
 			],
 			"chartValues": [
@@ -1285,11 +1431,15 @@
 				3,
 				"square affected by ramp",
 				4,
-				"triangle",
+				"saw affected by ramp",
 				5,
-				"sine",
+				"triangle",
 				6,
-				"square"
+				"sine",
+				7,
+				"square",
+				8,
+				"saw"
 			],
 			"columnAlignment": ["center", "left"]
 		}
@@ -1298,7 +1448,7 @@
 		{
 			"chartLabel": "Output waveform type A, B (parameters 0, 1)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Waveform"
 			],
 			"chartValues": [
@@ -1320,7 +1470,7 @@
 		{
 			"chartLabel": "Output B Logical operation (parameter 0)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Operation"
 			],
 			"chartValues": [
@@ -1368,7 +1518,7 @@
 		{
 			"chartLabel": "A & B outputs (parameter 1)",
 			"horizontalHeader": [
-				"Param Val",
+				"Param val",
 				"Output A",
 				"Output B"
 			],
